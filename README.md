@@ -32,7 +32,7 @@ The primary dataset is the public MTSamples medical transcription corpus.
 - Approximate original size: 5,000 transcription samples
 - Final cleaned size: **[ADD AFTER PROFILING]**
 - Supported specialties: **[ADD FINAL SPECIALTY LIST]**
-- Source: [MTSamples](https://www.mtsamples.com/)
+- Source: [MTSamples](https://www.kaggle.com/datasets/tboyle10/medicaltranscriptions)
 
 The specialty label is treated as an evaluation benchmark. It is not assumed to be a clinically validated referral outcome.
 
