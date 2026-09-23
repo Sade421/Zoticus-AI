@@ -1,10 +1,12 @@
 import os
 import re
+from pathlib import Path
 from typing import Optional
 
 import streamlit as st
-import openai
 
+from symptom import build_appointment_plan, get_symptom_options, summarize_diagnosis
+from specialty_classifier import build_case_text, predict_specialty
 
 
 URGENT_PATTERNS = [
@@ -22,16 +24,23 @@ URGENT_PATTERNS = [
     "shortness of breath",
 ]
 
-#Sidebar with Patient Information
-st.sidebar.title("Patient Information")
-name = st.sidebar.text_input("Name: [Enter patient name]")
-age = st.sidebar.number_input("Age: [Enter patient age]", min_value=0, max_value=150, step=1)
-sex = st.sidebar.selectbox("Sex: [Enter patient sex]", options=["Male", "Female", "Other"])
-medical_history = st.sidebar.text_area("Medical History: [Enter relevant medical history]")
-current_medications = st.sidebar.text_area("Current Medications: [Enter current medications]")
-st.sidebar.button("Submit")
 
-
+def get_missing_information_question(
+    symptom: str,
+    duration: str,
+    severity: Optional[int],
+    location: str,
+) -> Optional[str]:
+    """Return the next single follow-up question needed for specialty review."""
+    if not (symptom or "").strip():
+        return "What is the main symptom you are experiencing?"
+    if not (duration or "").strip():
+        return "How long have you had this symptom?"
+    if severity is None or severity <= 0:
+        return "How severe is the symptom from 1-10?"
+    if not (location or "").strip():
+        return "Where is the symptom located?"
+    return None
 
 
 def generate_openai_response(prompt: str) -> Optional[str]:
@@ -62,149 +71,78 @@ def generate_openai_response(prompt: str) -> Optional[str]:
         return None
 
 
-def answer_medical_question(question: str) -> str:
-    if not question or not question.strip():
-        return "Please enter a medical question so I can help."
-
-    prompt = f"Answer this medical question in plain language and keep it general. Question: {question}"
-    ai_response = generate_openai_response(prompt)
-    if ai_response:
-        return ai_response.strip()
-
-    q = question.lower()
-    urgent = any(pattern in q for pattern in URGENT_PATTERNS)
-    if urgent:
-        return (
-            "This could be urgent. Seek urgent medical evaluation now or call emergency services if symptoms are severe, "
-            "rapidly worsening, or accompanied by chest pain, trouble breathing, confusion, fainting, or severe bleeding. "
-            "I can provide general information, but I cannot replace professional medical assessment."
-        )
-
-    if "fever" in q:
-        return (
-            "For a fever, the general approach is fluids, rest, and monitoring symptoms. High fever, persistent fever, "
-            "difficulties breathing, confusion, stiff neck, or a fever in a newborn should be assessed by a doctor promptly."
-        )
-
-    if "cough" in q:
-        return (
-            "A cough can be caused by colds, allergies, asthma, reflux, or infections. Seek care if it lasts more than 2-3 weeks, "
-            "you have fever, chest pain, shortness of breath, coughing blood, or worsening symptoms."
-        )
-
-    if "headache" in q:
-        return (
-            "Headaches are often mild and temporary, but sudden severe headache, weakness, confusion, fever, or vomiting should be evaluated urgently. "
-            "Keep hydration and avoid overstimulation while monitoring symptoms."
-        )
-
-    if "pain" in q:
-        return (
-            "Pain severity, duration, and location matter. If pain is severe, sudden, or accompanied by chest pain, shortness of breath, fever, swelling, or weakness, seek prompt medical care."
-        )
-
-    return (
-        "I can provide general health information, but this is not a diagnosis. For persistent, worsening, or unusual symptoms, "
-        "a clinician should assess the situation. If symptoms are severe or rapidly worsening, seek urgent evaluation."
-    )
 
 
-def summarize_document(document_text: str) -> str:
-    if not document_text or not document_text.strip():
-        return "Please paste a patient note or document for summarization."
-
-    prompt = (
-        "Summarize this medical document in clear and concise language for a clinician. Include: "
-        "1) main medical issues, 2) current symptoms, 3) key observations, 4) follow-up or risk concerns. "
-        "Document:\n"
-        f"{document_text}"
-    )
-    ai_response = generate_openai_response(prompt)
-    if ai_response:
-        return ai_response.strip()
-
-    cleaned = re.sub(r"\s+", " ", document_text).strip()
-    if len(cleaned) < 50:
-        return "The provided text is too short to summarize meaningfully."
-
-    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", cleaned) if s.strip()]
-    summary_lines = [
-        "Main clinical concerns:",
-        "- Review the documented symptoms, associated duration, and severity.",
-        "- Note any known diagnoses, recent treatments, or medication changes.",
-        "- Identify key risk factors such as age, fever, oxygen concerns, or worsening condition.",
-        "",
-        "Short summary:",
-        f"- The document describes {min(len(sentences), 3)} relevant clinical observations, including symptom progression and current care status.",
-        "- The key follow-up concern is whether the patient is stable, improving, or showing red-flag symptoms requiring urgent assessment.",
-        "- Additional clinician review may be needed if there are abnormal vitals, worsening pain, or concerning lab or imaging findings.",
-    ]
-    return "\n".join(summary_lines)
-
-uploaded_files = st.file_uploader("Upload a clinical document (PDF, DOCX, or TXT) for summarization:", type=["pdf", "docx", "txt"])
-for uploaded_file in uploaded_files or []:
-    if uploaded_file is not None:
-        file_content = uploaded_file.read()
-        if uploaded_file.type == "application/pdf":
-            from PyPDF2 import PdfReader
-
-            pdf_reader = PdfReader(uploaded_file)
-            text = "\n".join(page.extract_text() for page in pdf_reader.pages if page.extract_text())
-        elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            from docx import Document
-
-            doc = Document(uploaded_file)
-            text = "\n".join(paragraph.text for paragraph in doc.paragraphs)
-        else:
-            text = file_content.decode("utf-8", errors="ignore")
-
-        summary = summarize_document(text)
-        st.text_area("Document Summary", summary, height=220)
 
 
-def build_handoff_note(patient_name: str, symptoms: str, history: str, vitals: str, meds: str) -> str:
-    patient_name = patient_name.strip() or "Patient"
-    symptoms = symptoms.strip() or "No symptom details provided"
-    history = history.strip() or "No past medical history provided"
-    vitals = vitals.strip() or "No vitals provided"
-    meds = meds.strip() or "No medication list provided"
 
-    prompt = (
-        "Create a concise clinician handoff note using this patient information. Include assessment, symptom summary, "
-        "vitals, PMH, current medications, concerns, and suggested action. Format as a structured note. "
-        f"Patient: {patient_name}\nSymptoms: {symptoms}\nHistory: {history}\nVitals: {vitals}\nMedications: {meds}"
-    )
-    ai_response = generate_openai_response(prompt)
-    if ai_response:
-        return ai_response.strip()
-
-    return (
-        f"Handoff Note: {patient_name}\n"
-        "\n"
-        "Reason for handoff:\n"
-        f"- Symptoms reported: {symptoms}\n"
-        "\n"
-        "Clinical background:\n"
-        f"- Relevant history: {history}\n"
-        f"- Vitals: {vitals}\n"
-        f"- Current medications: {meds}\n"
-        "\n"
-        "Assessment:\n"
-        "- Patient is being transitioned for clinician review.\n"
-        "- Monitor for worsening pain, fever, respiratory symptoms, confusion, or signs of acute deterioration.\n"
-        "\n"
-        "Action requested:\n"
-        "- Please evaluate stability, confirm diagnosis, and determine whether urgent assessment or ongoing observation is needed.\n"
-    )
-
-
-st.set_page_config(page_title="Healthcare AI Assistant", page_icon="🩺")
-
-st.title("Healthcare AI Assistant")
-st.caption("General clinical support for questions, document summaries, and clinician handoffs.")
+st.set_page_config(page_title=" Sentient AI Healthcare Assistant", page_icon="🩺")
+st.title("Sentient AI Healthcare Assistant")
+st.caption("General clinical support for questions, document summaries, specialist scheduling, and clinician handoffs.")
 st.warning("This tool is for informational use only and does not replace professional medical judgment.")
 
-main_tab, summary_tab, handoff_tab = st.tabs(["Ask a question", "Summarize document", "Doctor / Nurse handoff"])
+intake_tab, main_tab, summary_tab, specialist_tab, handoff_tab = st.tabs(
+    
+    [
+        "Patient intake form",
+        "Medical question",
+        "Clinical document summary",
+        "Specialist appointment planning",
+        "Clinician handoff note",
+    ]
+)
+with intake_tab:
+    st.subheader("Patient intake form")
+    st.caption("Enter the patient's current information for clinician review.")
+
+    with st.form("patient_intake_form"):
+        patient_name = st.text_input("Patient name (optional)")
+        age = st.number_input("Age", min_value=0, max_value=150, step=1, value=0)
+        sex = st.selectbox(
+            "Sex",
+            ["Prefer not to say", "Female", "Male", "Intersex", "Other"],
+        )
+        symptom_location = st.selectbox(
+            "Symptom location",
+            ["Head", "Chest", "Abdomen", "Back", "Shoulders", "Extremities", "Other"],
+        )
+        symptom_type = st.selectbox(
+            "Symptom type",
+            ["Pain", "Ache", "Pressure", "Burning", "Tingling", "Soreness", "Other"],
+        )
+        severity = st.slider("Severity", min_value=0, max_value=10, value=0, help="0 = no discomfort, 10 = worst possible")
+        duration = st.text_input("Duration", placeholder="For example: 3 days or since this morning")
+        main_complaint = st.text_area("Main complaint", height=100)
+        medical_history = st.text_area("Medical history", height=120)
+        medications = st.text_area("Medications", height=120)
+        clinical_documents = st.file_uploader(
+            "Upload clinical documents",
+            type=["pdf", "docx", "txt"],
+            accept_multiple_files=True,
+            help="Accepted formats: PDF, DOCX, and TXT.",
+        )
+        test_results = st.text_area("Test-result text", height=140)
+        submitted = st.form_submit_button("Submit intake")
+
+    if submitted:
+        uploaded_names = [document.name for document in clinical_documents]
+        st.success("Patient intake submitted for clinician review.")
+        st.write(
+            {
+                "Patient name": patient_name or "Not provided",
+                "Age": age,
+                "Sex": sex,
+                "Main complaint": main_complaint or "Not provided",
+                "Symptom location": symptom_location,
+                "Symptom type": symptom_type,
+                "Severity": f"{severity}/10",
+                "Duration": duration or "Not provided",
+                "Medical history": medical_history or "Not provided",
+                "Medications": medications or "Not provided",
+                "Uploaded clinical documents": uploaded_names or ["None"],
+                "Test-result text": test_results or "Not provided",
+            }
+        )
 
 with main_tab:
     st.subheader("Medical question")
@@ -215,10 +153,87 @@ with main_tab:
 
 with summary_tab:
     st.subheader("Clinical document summary")
+    uploaded_document = st.file_uploader(
+        "Upload a clinical note",
+        type=["pdf", "docx", "txt"],
+        help="Accepted formats: PDF, DOCX, and TXT.",
+    )
     raw_text = st.text_area("Paste patient notes, visit summaries, or a chart excerpt:", height=220)
     if st.button("Summarize note"):
-        summary = summarize_document(raw_text)
+        document_text = extract_uploaded_document(uploaded_document) if uploaded_document else raw_text
+        summary = summarize_document(document_text)
         st.text_area("Summary", summary, height=220)
+
+
+with specialist_tab:
+    st.subheader("Specialist appointment planning")
+    body_part = st.selectbox(
+        "Which area of the body is affected?",
+        ["", "Head", "Shoulders", "Back", "Stomach"],
+        format_func=lambda value: value or "Select a location",
+    )
+    feeling_type = st.selectbox("What type of feeling is it?", ["Pain", "Ache", "Soreness"])
+    options = get_symptom_options(body_part.lower(), feeling_type.lower()) if body_part else []
+    symptom_detail = st.selectbox(
+        "Select the symptom that best matches the patient experience:",
+        [""] + options,
+        format_func=lambda value: value or "Select a symptom",
+    )
+    duration = st.text_input("How long has this symptom been present?", placeholder="For example: 3 days")
+    severity = st.slider("Symptom severity", min_value=0, max_value=10, value=0, help="0 means not provided; 1 is mild and 10 is worst possible.")
+    extra_info = st.text_area("Tell us more about the symptoms:", height=120)
+    test_results = st.text_area("Review any test results or imaging notes:", height=120)
+
+    if st.button("Recommend specialist and schedule"):
+        follow_up_question = get_missing_information_question(
+            symptom=symptom_detail,
+            duration=duration,
+            severity=severity,
+            location=body_part,
+        )
+
+        if follow_up_question:
+            st.warning(f"Sentient AI needs one more detail: {follow_up_question}")
+            st.stop()
+
+        plan = build_appointment_plan(
+            body_part=body_part,
+            feeling_type=feeling_type,
+            symptom_detail=f"{symptom_detail} (severity {severity}/10, duration: {duration})",
+            extra_info=extra_info,
+            test_results=test_results,
+        )
+
+        checkpoint_dir = Path("models/specialty_classifier")
+        if (checkpoint_dir / "labels.json").exists():
+            completed_case = build_case_text(
+                complaint=symptom_detail,
+                symptoms=extra_info,
+                location=body_part,
+                duration=duration,
+                severity=f"{severity}/10",
+                test_results=test_results,
+            )
+            prediction = predict_specialty(completed_case, checkpoint_dir)
+            st.success(
+                f"Model specialty prediction: {prediction.specialty} "
+                f"({prediction.probability:.1%} confidence)"
+            )
+            st.json(prediction.probabilities)
+        else:
+            st.success(f"Recommended specialist: {plan['specialist']}")
+        st.write(plan["diagnosis_summary"])
+        st.write("### Before appointment")
+        for item in plan["before_appointment_instructions"]:
+            st.write(f"- {item}")
+        st.write("### Driving instructions")
+        for item in plan["driving_instructions"]:
+            st.write(f"- {item}")
+        st.write("### After care")
+        for item in plan["after_care_instructions"]:
+            st.write(f"- {item}")
+        st.write("### Additional medical diagnosis summary")
+        st.write(summarize_diagnosis(f"{extra_info}\n{test_results}"))
 
 with handoff_tab:
     st.subheader("Clinician handoff note")
@@ -233,3 +248,4 @@ with handoff_tab:
 
 st.markdown("---")
 st.info("Urgent red flags: chest pain, trouble breathing, severe bleeding, confusion, fainting, or rapidly worsening symptoms should prompt immediate evaluation.")
+
