@@ -53,7 +53,29 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 ## Data Profile
 
 Replace this table with your actual results after running the preparation notebook.
+============================================================
+MTSAMPLES DATA READINESS PROFILE
+============================================================
 
+Rows: 4999
+Columns: 6
+
+COLUMN NAMES
+1. Record ID
+2. description
+3. medical_specialty
+4. sample_name
+5. transcription
+6. keywords
+
+DATA TYPES
+Record ID             int64
+description          object
+medical_specialty    object
+sample_name          object
+transcription        object
+keywords             object
+dtype: object
 
 ## Proposed Approach
 
