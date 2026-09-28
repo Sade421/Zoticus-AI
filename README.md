@@ -30,8 +30,6 @@ The primary dataset is the public MTSamples medical transcription corpus.
 - Target: medical-specialty label
 - Additional fields: description, sample type, and keywords when available
 - Approximate original size: 5,000 transcription samples
-- Final cleaned size: **[ADD AFTER PROFILING]**
-- Supported specialties: **[ADD FINAL SPECIALTY LIST]**
 - Source: [MTSamples](https://www.kaggle.com/datasets/tboyle10/medicaltranscriptions)
 
 The specialty label is treated as an evaluation benchmark. It is not assumed to be a clinically validated referral outcome.
@@ -56,17 +54,6 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 
 Replace this table with your actual results after running the preparation notebook.
 
-| Measure | Result |
-|---|---:|
-| Original rows | [ADD] |
-| Rows after cleaning | [ADD] |
-| Columns used | [ADD] |
-| Duplicate records removed | [ADD] |
-| Missing transcription records | [ADD] |
-| Number of supported specialties | [ADD] |
-| Training records | [ADD] |
-| Validation records | [ADD] |
-| Test records | [ADD] |
 
 ## Proposed Approach
 
