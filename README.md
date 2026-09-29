@@ -133,8 +133,6 @@ Generated recommendations and instructions are drafts. Clinical staff retain fin
 - Pandas
 - Claude API
 - n8n
-- Streamlit or React for the prototype interface
-- FastAPI for API endpoints
 - scikit-learn for evaluation metrics
 - Git and GitHub for version control
 
