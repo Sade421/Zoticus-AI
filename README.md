@@ -2,9 +2,10 @@
 
 ## Clinical Specialist Matching and Scheduling Assistant
 
-Sentient AI is a capstone project developed for Zoticus AI’s Sentient AI platform. The system analyzes de-identified clinical transcription text and recommends the appropriate medical specialty for a nonemergency outpatient referral.
+Sentient AI is a capstone project developed for Zoticus AI’s Agentic AI platform. The system analyzes de-identified clinical transcription text and recommends the appropriate medical specialty for a nonemergency outpatient referral.
 
 The project also demonstrates an n8n workflow that drafts an appointment booking when the recommendation meets the confidence threshold. Low-confidence cases are sent to clinical staff for manual review.
+
 
 ## Project Decision
 
