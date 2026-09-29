@@ -1,8 +1,10 @@
 # Sentient AI
+An app that can keep track of patient status, answer basic healthcare questions, summarize clinical documents, and schedule appointments with patients.
+# Patient Tracker AI
 
 ## Clinical Specialist Matching and Scheduling Assistant
 
-Sentient AI is a capstone project developed for Zoticus AI’s Agentic AI platform. The system analyzes de-identified clinical transcription text and recommends the appropriate medical specialty for a nonemergency outpatient referral.
+Patient Tracker AI is a capstone project developed for Zoticus AI’s Sentient AI platform. The system analyzes de-identified clinical transcription text and recommends the appropriate medical specialty for a nonemergency outpatient referral.
 
 The project also demonstrates an n8n workflow that drafts an appointment booking when the recommendation meets the confidence threshold. Low-confidence cases are sent to clinical staff for manual review.
 
@@ -30,7 +32,9 @@ The primary dataset is the public MTSamples medical transcription corpus.
 - Target: medical-specialty label
 - Additional fields: description, sample type, and keywords when available
 - Approximate original size: 5,000 transcription samples
-- Source: [MTSamples](https://www.kaggle.com/datasets/tboyle10/medicaltranscriptions)
+- Final cleaned size: **[ADD AFTER PROFILING]**
+- Supported specialties: **[ADD FINAL SPECIALTY LIST]**
+- Source: [MTSamples](https://www.mtsamples.com/)
 
 The specialty label is treated as an evaluation benchmark. It is not assumed to be a clinically validated referral outcome.
 
@@ -52,14 +56,19 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 
 ## Data Profile
 
-Replace this table with your actual results after running the preparation notebook
+Replace this table with your actual results after running the preparation notebook.
 
-| Measure | Profile |
+| Measure | Result |
 |---|---:|
-| Rows | 4,999 |
-| Columns | 6 |
-| Numeric identifier | `Record ID` (int64 in the supplied profile) |
-| Other fields | `description`, `medical_specialty`, `sample_name`, `transcription`, `keywords` (object) |
+| Original rows | [ADD] |
+| Rows after cleaning | [ADD] |
+| Columns used | [ADD] |
+| Duplicate records removed | [ADD] |
+| Missing transcription records | [ADD] |
+| Number of supported specialties | [ADD] |
+| Training records | [ADD] |
+| Validation records | [ADD] |
+| Test records | [ADD] |
 
 ## Proposed Approach
 
@@ -133,6 +142,8 @@ Generated recommendations and instructions are drafts. Clinical staff retain fin
 - Pandas
 - Claude API
 - n8n
+- Streamlit or React for the prototype interface
+- FastAPI for API endpoints
 - scikit-learn for evaluation metrics
 - Git and GitHub for version control
 
