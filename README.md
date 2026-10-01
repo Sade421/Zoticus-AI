@@ -31,9 +31,9 @@ The primary dataset is the public MTSamples medical transcription corpus.
 - Target: medical-specialty label
 - Additional fields: description, sample type, and keywords when available
 - Approximate original size: 5,000 transcription samples
-- Final cleaned size: **[ADD AFTER PROFILING]**
-- Supported specialties: **[ADD FINAL SPECIALTY LIST]**
-- Source: [MTSamples](https://www.mtsamples.com/)
+- Final cleaned size: 510
+- Supported specialties: 9
+- - Source: [MTSamples](https://www.mtsamples.com/)
 
 The specialty label is treated as an evaluation benchmark. It is not assumed to be a clinically validated referral outcome.
 
@@ -55,19 +55,26 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 
 ## Data Profile
 
-Replace this table with your actual results after running the preparation notebook.
+The preparation pipeline retained 510 records across nine specialty
+labels after filtering, duplicate removal, pre-decision truncation,
+and exclusion of notes without a recognized decision header.
 
 | Measure | Result |
-|---|---:|
-| Original rows | [ADD] |
-| Rows after cleaning | [ADD] |
-| Columns used | [ADD] |
-| Duplicate records removed | [ADD] |
-| Missing transcription records | [ADD] |
-| Number of supported specialties | [ADD] |
-| Training records | [ADD] |
-| Validation records | [ADD] |
-| Test records | [ADD] |
+|---|---|
+| Original rows | 4,999 |
+| Rows after cleaning and filtering | 510 |
+| Columns used for modeling | `text` (input), `specialty` (target) |
+| Exact duplicate records removed | 80 |
+| Missing transcription records in original data | 33 |
+| Number of supported specialty labels | 9 |
+| Training records | 356 |
+| Validation records | 77 |
+| Test records | 77 |
+
+Near-duplicate groups were kept within the same partition.
+The test partition was frozen during the revision and has not
+been evaluated. Its cases were previously exposed during
+preliminary development, so it is not a fully independent test set.|
 
 ## Proposed Approach
 
