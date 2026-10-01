@@ -131,7 +131,7 @@ The workflow sends a case to clinical review when:
 - Appointment instructions fail the safety checklist.
 - The input is incomplete or ambiguous.
 
-Generated recommendations and instructions are drafts. Clinical staff retain final authority.
+Generated recommendations and instructions are drafts. Clinical staff retains final authority.
 
 ## System Workflow
 
@@ -148,8 +148,6 @@ Generated recommendations and instructions are drafts. Clinical staff retain fin
 - Pandas
 - Claude API
 - n8n
-- Streamlit or React for the prototype interface
-- FastAPI for API endpoints
 - scikit-learn for evaluation metrics
 - Git and GitHub for version control
 
