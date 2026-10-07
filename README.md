@@ -250,5 +250,6 @@ The tree below describes the intended layout. The current committed paths are `R
 
 ├── notebooks/
 │   └── data_preparation.ipynb
+| - README.md
 ├── mtsamples-v3.csv
 
