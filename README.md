@@ -57,7 +57,7 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 
 ## Data Profile
 
-The supplied `Sentient_AI_Data_Preparation (5).ipynb` reports the following stages. These values replace the earlier nine-label profile. The GitHub notebook linked elsewhere in this README is an older version and does not substantiate these updated results.
+The supplied `Sentient_AI_Data_Preparation (5).ipynb` reports the following stages. These values replace the earlier nine-label profile.  These values reflect a 10-specialty-label profile.
 
 | Preparation stage | Records |
 |---|---:|
