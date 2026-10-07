@@ -247,23 +247,8 @@ Generated recommendations and instructions are drafts. Clinical staff retains fi
 The tree below describes the intended layout. The current committed paths are `README.md`, `mtsamples-v3.csv`, and `notebook/data_preparation` (notebook JSON stored without an `.ipynb` extension).
 
 ```text
-healthcare_assistant/
-├── README.md
-├── requirements.txt
-├── .env.example
-├── data/
-│   ├── README.md
-│   └── processed/
+
 ├── notebooks/
 │   └── data_preparation.ipynb
-├── src/
-│   ├── preprocessing.py
-│   ├── keyword_baseline.py
-│   ├── specialist_matcher.py
-│   └── evaluation.py
-├── workflows/
-│   └── specialist_matching_n8n.json
-├── tests/
-└── results/
-    └── evaluation_summary.md
+├── mtsamples-v3.csv
 
