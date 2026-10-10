@@ -1,0 +1,5 @@
+model,top1_accuracy,macro_f1
+Logistic Regression (TF-IDF),0.848,0.843
+MLP (64),0.864,0.826
+MLP (64-32),0.848,0.816
+Claude (zero-shot),0.295,0.046
