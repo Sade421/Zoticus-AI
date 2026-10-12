@@ -83,7 +83,7 @@ The 116-record test partition was reserved during revision from previously avail
 
 ### Supported specialties and reported split counts
 
-| Specialty label | Training | Validation | Test |
+| Specialty label | Training | Validation | Reserved Test |
 |---|---:|---:|---:|
 | Cardiovascular / Pulmonary | 156 | 39 | 35 |
 | Orthopedic | 100 | 25 | 22 |
