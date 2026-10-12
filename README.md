@@ -57,7 +57,7 @@ Raw data remains unchanged. Cleaned and processed files are stored separately.
 
 ## Data Profile
 
-The supplied `Sentient_AI_Data_Preparation (5).ipynb` reports the following stages. These values replace the earlier nine-label profile.  These values reflect a 10-specialty-label profile.
+The supplied `data_preparation` notebook reports the following stages. These values replace the earlier nine-label profile.  These values reflect a 10-specialty-label profile.
 
 | Preparation stage | Records |
 |---|---:|
@@ -185,7 +185,7 @@ Nephrology has the lowest reported Claude recall (0.56). Dermatology's perfect s
 
 Primary evidence: the supplied `Sentient_AI_Data_Preparation (5).ipynb`, inspected on October 7, 2026. Upload this notebook to the repository alongside the README so readers can inspect the updated outputs.
 
-Historical reference only: [older preparation notebook at commit 9916ad5](https://github.com/Sade421/Zoticus-AI/blob/9916ad52bce4faa413b64ce2761b72881da04ef9/notebook/data_preparation). That older notebook reports nine labels and different metrics; it is not the evidence for the current tables.
+Historical reference only: [older preparation notebook at commit 9916ad5](https://github.com/Sade421/Zoticus-AI/blob/9916ad52bce4faa413b64ce2761b72881da04ef9/notebook/data_preparation). That older notebook reports nine labels and different metrics; it is not evidence for the current tables.
 
 | Claim | Evidence location in the notebook |
 |---|---|
