@@ -153,12 +153,12 @@ Sections 9–12 and the Section 15 summary report the following scores on **132 
 
 | Model or baseline | Top-1 specialist agreement | Macro F1 |
 |---|---:|---:|
-| Majority class | 29.5% | 0.046 |
-| Keyword baseline | 50.0% | 0.481 |
-| Logistic Regression (TF-IDF) | 84.8% | 0.843 |
-| MLP (64) | 86.4% | 0.826 |
-| MLP (64, 32) | 84.8% | 0.816 |
-| Claude pipeline (zero-shot, including fallback predictions) | **88.6%** | **0.873** |
+| Majority class | 30.8% | 0.047 |
+| Keyword baseline | 54.2% | 0.466 |
+| Logistic Regression (TF-IDF) | 86.9% | 0.870 |
+| MLP (64) | 88.8% | 0.863 |
+| MLP (64, 32) | 86.0% | 0.825 |
+| Claude pipeline (zero-shot, including fallback predictions) | **87.9%** | **0.888** |
 
 Claude has the highest reported validation agreement and macro F1. Its validation agreement exceeds the numeric 85% target, but this does **not** demonstrate that the held-out target or project acceptance criteria have been met.
 
