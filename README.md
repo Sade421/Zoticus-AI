@@ -83,19 +83,19 @@ The 116-record test partition was reserved during revision from previously avail
 
 ### Supported specialties and reported split counts
 
-| Specialty label | Training | Validation | Reserved Test |
+| Specialty label | Training | Validation | Test |
 |---|---:|---:|---:|
-| Cardiovascular / Pulmonary | 156 | 39 | 35 |
-| Orthopedic | 100 | 25 | 22 |
-| Gastroenterology | 53 | 13 | 12 |
-| Obstetrics / Gynecology | 48 | 12 | 10 |
-| Urology | 40 | 10 | 9 |
-| Nephrology | 35 | 9 | 8 |
-| Neurology | 34 | 9 | 7 |
-| ENT - Otolaryngology | 25 | 6 | 6 |
-| Ophthalmology | 22 | 6 | 5 |
-| Dermatology | 12 | 3 | 2 |
-| **Total** | **525** | **132** | **116** |
+| Cardiovascular / Pulmonary | 33  |  153  | 33 |
+| Orthopedic | 20 |  94  | 20 |
+| Gastroenterology | 12 | 53  | 11 |
+| Obstetrics / Gynecology | 8 | 38 | 8 |          
+| Urology | 8 | 39  | 8 |
+| Nephrology |  7 | 33 | 7 |
+| Neurology | 7 |  34 | 8 |
+| ENT - Otolaryngology |  5 | 21 | 5 |
+| Ophthalmology |  5 |  21 |  4 |
+| Dermatology |  2 | 11 |  3 |
+| **Total** | **107** | **497** | **107** |
 
 These are dataset labels. In particular, `Cardiovascular / Pulmonary` combines disciplines and does not identify one individual clinician or distinguish cardiology from pulmonology.
 
@@ -168,18 +168,17 @@ These values are copied from Section 12's saved classification report, which dis
 
 | Specialty label | Precision | Recall | F1 | Validation support |
 |---|---:|---:|---:|---:|
-| Cardiovascular / Pulmonary | 0.97 | 0.90 | 0.93 | 39 |
-| Dermatology | 1.00 | 1.00 | 1.00 | 3 |
-| ENT - Otolaryngology | 0.71 | 0.83 | 0.77 | 6 |
-| Gastroenterology | 0.80 | 0.92 | 0.86 | 13 |
-| Nephrology | 0.71 | 0.56 | 0.62 | 9 |
-| Neurology | 0.69 | 1.00 | 0.82 | 9 |
-| Obstetrics / Gynecology | 1.00 | 1.00 | 1.00 | 12 |
-| Ophthalmology | 1.00 | 1.00 | 1.00 | 6 |
-| Orthopedic | 1.00 | 0.88 | 0.94 | 25 |
-| Urology | 0.91 | 1.00 | 0.95 | 10 |
-
-Nephrology has the lowest reported Claude recall (0.56). Dermatology's perfect score represents only three validation cases and should not be interpreted as established generalization.
+| Cardiovascular / Pulmonary | 0.94 | 0.94  | 0.94 | 32
+| Dermatology | 1.00 | 1.00  | 1.00 | 2
+| ENT - Otolaryngology |  1.00 | 1.00  | 1.00 | 5
+| Gastroenterology | 0.90 | 0.90  | 0.90 | 10
+| Nephrology | 1.00  | 0.50  | 0.67 | 6
+| Neurology | 0.73 | 1.00 | 0.84 | 8
+| Obstetrics / Gynecology | 1.00 | 1.00 | 1.00 | 8
+| Ophthalmology | 1.00 | 1.00  | 1.00 | 4
+| Orthopedic | 1.00  | 0.94 | 0.97 | 18
+| Urology | 0.89 | 1.00 | 0.94 | 8
+Nephrology has the lowest reported Claude recall (1.00). Dermatology's perfect score represents only three validation cases and should not be interpreted as established generalization.
 
 ### Evidence and reproducibility limits
 
