@@ -213,7 +213,7 @@ The repository currently contains the README, source CSV, and preparation notebo
 
 Patient safety and human oversight are required.
 
-The workflow sends a case to clinical review when:
+The workflow sends a case to clinical(Nurses, doctors) review when:
 
 - Model confidence is below the approved threshold.
 - The recommendation lacks supporting evidence.
@@ -221,7 +221,7 @@ The workflow sends a case to clinical review when:
 - Appointment instructions fail the safety checklist.
 - The input is incomplete or ambiguous.
 
-Generated recommendations and instructions are drafts. Clinical staff retains final authority.
+Generated recommendations and instructions are drafts. Clinical staff (nurses, doctors) retain final authority. They are the ones responsible for checking patient safety and reviewing the patient records.
 
 ## Planned System Workflow
 
