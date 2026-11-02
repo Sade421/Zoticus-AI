@@ -1,0 +1,11 @@
+specialty,support,correct,answered,coverage,precision,recall,f1
+Cardiovascular / Pulmonary,33,33,33,1.0,0.3055555555555556,1.0,0.46808510638297873
+Dermatology,2,0,2,1.0,,0.0,0.0
+ENT - Otolaryngology,5,0,5,1.0,,0.0,0.0
+Gastroenterology,12,0,12,1.0,,0.0,0.0
+Nephrology,7,0,7,1.0,,0.0,0.0
+Neurology,8,0,8,1.0,,0.0,0.0
+Obstetrics / Gynecology,8,0,8,1.0,,0.0,0.0
+Ophthalmology,5,0,5,1.0,,0.0,0.0
+Orthopedic,20,0,20,1.0,,0.0,0.0
+Urology,8,0,8,1.0,,0.0,0.0
