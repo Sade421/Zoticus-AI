@@ -1,0 +1,10 @@
+{
+  "keyword_provenance": "inherited, not training-only for current split",
+  "model": "Majority class",
+  "parameters": {
+    "constant": null,
+    "random_state": null,
+    "strategy": "most_frequent"
+  },
+  "seed": 101
+}
