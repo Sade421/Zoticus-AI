@@ -1,0 +1,5 @@
+outcome,cases,per_100_referrals
+Routed to the dataset specialty (auto-draft for staff approval),61,56.48148148148148
+Correct combined label; staff confirm Cardiology vs. Pulmonology,31,28.703703703703702
+Wrong specialty proposed (staff must catch at approval),16,14.814814814814815
+Classifier abstained / failed (staff review),0,0.0

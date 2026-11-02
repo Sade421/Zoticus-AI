@@ -1,0 +1,17 @@
+requirement,artifact,artifact_present,personally_verified_by,verified_at_utc,repository_commit,completion_claim
+data_record_flow,record_flow.csv,True,,,536d834,pending human verification
+historical_audit_actions,audit_actions_applied.csv,True,,,536d834,pending human verification
+remaining_headerless_notes,remaining_untruncated_review.csv,True,,,536d834,pending human verification
+development_manifest,split_manifest.csv,True,,,536d834,pending human verification
+candidate_registry,run_registry.json,True,,,536d834,pending human verification
+robustness_software_checks,robustness_development.csv,True,,,536d834,pending human verification
+robustness_model_shift,robustness_model_shift.csv,True,,,536d834,pending human verification
+min_length_floor_by_class,min_length_floor_by_class.csv,True,,,536d834,pending human verification
+selection_table,selection_table.csv,True,,,536d834,pending human verification
+frozen_configuration,frozen_configuration.json,True,,,536d834,pending human verification
+frozen_predictor,frozen_predictor.py,True,,,536d834,pending human verification
+holdout_started_marker,development_holdout_started.json,True,,,536d834,pending human verification
+holdout_predictions,development_holdout_predictions.csv,True,,,536d834,pending human verification
+holdout_metrics,development_holdout_metrics.json,True,,,536d834,pending human verification
+business_units,business_units_holdout.csv,True,,,536d834,pending human verification
+independent_final_pool (future),final_pool_provenance.json,False,,,536d834,pending human verification

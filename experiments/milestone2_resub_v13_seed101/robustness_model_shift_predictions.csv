@@ -1,0 +1,433 @@
+case_id,shift,gold,prediction,correct
+case_28,original,Urology,Ophthalmology,False
+case_32,original,Urology,Cardiovascular / Pulmonary,False
+case_58,original,Urology,Gastroenterology,False
+case_67,original,Urology,Urology,True
+case_69,original,Urology,Urology,True
+case_120,original,Urology,Urology,True
+case_122,original,Urology,Orthopedic,False
+case_139,original,Urology,Urology,True
+case_2008,original,Orthopedic,Orthopedic,True
+case_2037,original,Orthopedic,Orthopedic,True
+case_2065,original,Orthopedic,Orthopedic,True
+case_2078,original,Orthopedic,Orthopedic,True
+case_2083,original,Orthopedic,Orthopedic,True
+case_2085,original,Orthopedic,Orthopedic,True
+case_2091,original,Orthopedic,Orthopedic,True
+case_2095,original,Orthopedic,Orthopedic,True
+case_2112,original,Orthopedic,Orthopedic,True
+case_2135,original,Orthopedic,Orthopedic,True
+case_2155,original,Orthopedic,Orthopedic,True
+case_2181,original,Orthopedic,Orthopedic,True
+case_2210,original,Orthopedic,Orthopedic,True
+case_2213,original,Orthopedic,Orthopedic,True
+case_2254,original,Orthopedic,Orthopedic,True
+case_2279,original,Orthopedic,Orthopedic,True
+case_2303,original,Orthopedic,Orthopedic,True
+case_2310,original,Orthopedic,Orthopedic,True
+case_2316,original,Orthopedic,Orthopedic,True
+case_2359,original,Orthopedic,Orthopedic,True
+case_2376,original,Ophthalmology,Ophthalmology,True
+case_2386,original,Ophthalmology,Ophthalmology,True
+case_2393,original,Ophthalmology,Ophthalmology,True
+case_2432,original,Ophthalmology,Urology,False
+case_2444,original,Ophthalmology,Ophthalmology,True
+case_2507,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2522,original,Obstetrics / Gynecology,Gastroenterology,False
+case_2547,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2556,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2602,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2606,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2633,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2643,original,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2774,original,Neurology,Neurology,True
+case_2838,original,Neurology,Neurology,True
+case_2850,original,Neurology,Orthopedic,False
+case_2874,original,Neurology,Neurology,True
+case_2883,original,Neurology,Gastroenterology,False
+case_2937,original,Neurology,Neurology,True
+case_2955,original,Neurology,Neurology,True
+case_2956,original,Neurology,Orthopedic,False
+case_2978,original,Nephrology,Nephrology,True
+case_2985,original,Nephrology,Obstetrics / Gynecology,False
+case_3027,original,Nephrology,Nephrology,True
+case_3035,original,Nephrology,Nephrology,True
+case_3036,original,Nephrology,Nephrology,True
+case_3040,original,Nephrology,Nephrology,True
+case_3042,original,Nephrology,Nephrology,True
+case_3455,original,Gastroenterology,Gastroenterology,True
+case_3473,original,Gastroenterology,Gastroenterology,True
+case_3475,original,Gastroenterology,Gastroenterology,True
+case_3486,original,Gastroenterology,Obstetrics / Gynecology,False
+case_3526,original,Gastroenterology,Gastroenterology,True
+case_3532,original,Gastroenterology,Gastroenterology,True
+case_3565,original,Gastroenterology,Gastroenterology,True
+case_3594,original,Gastroenterology,Gastroenterology,True
+case_3596,original,Gastroenterology,Gastroenterology,True
+case_3624,original,Gastroenterology,Gastroenterology,True
+case_3647,original,Gastroenterology,Gastroenterology,True
+case_3659,original,Gastroenterology,Gastroenterology,True
+case_3721,original,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3752,original,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3759,original,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3767,original,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3769,original,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_4014,original,Dermatology,Orthopedic,False
+case_4031,original,Dermatology,Dermatology,True
+case_4613,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4617,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4624,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4664,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4670,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4677,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4680,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4681,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4683,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4692,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4697,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4699,original,Cardiovascular / Pulmonary,Orthopedic,False
+case_4706,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4709,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4745,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4748,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4769,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4823,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4824,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4832,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4833,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4843,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4858,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4859,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4863,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4896,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4900,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4904,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4906,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4909,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4931,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4945,original,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4961,original,Cardiovascular / Pulmonary,Orthopedic,False
+case_28,first_200_chars,Urology,Ophthalmology,False
+case_32,first_200_chars,Urology,Orthopedic,False
+case_58,first_200_chars,Urology,Urology,True
+case_67,first_200_chars,Urology,Urology,True
+case_69,first_200_chars,Urology,Urology,True
+case_120,first_200_chars,Urology,Orthopedic,False
+case_122,first_200_chars,Urology,Orthopedic,False
+case_139,first_200_chars,Urology,Urology,True
+case_2008,first_200_chars,Orthopedic,Orthopedic,True
+case_2037,first_200_chars,Orthopedic,Orthopedic,True
+case_2065,first_200_chars,Orthopedic,Orthopedic,True
+case_2078,first_200_chars,Orthopedic,Orthopedic,True
+case_2083,first_200_chars,Orthopedic,Orthopedic,True
+case_2085,first_200_chars,Orthopedic,Orthopedic,True
+case_2091,first_200_chars,Orthopedic,Orthopedic,True
+case_2095,first_200_chars,Orthopedic,Orthopedic,True
+case_2112,first_200_chars,Orthopedic,Orthopedic,True
+case_2135,first_200_chars,Orthopedic,Orthopedic,True
+case_2155,first_200_chars,Orthopedic,Orthopedic,True
+case_2181,first_200_chars,Orthopedic,Orthopedic,True
+case_2210,first_200_chars,Orthopedic,Orthopedic,True
+case_2213,first_200_chars,Orthopedic,Orthopedic,True
+case_2254,first_200_chars,Orthopedic,Orthopedic,True
+case_2279,first_200_chars,Orthopedic,Orthopedic,True
+case_2303,first_200_chars,Orthopedic,Orthopedic,True
+case_2310,first_200_chars,Orthopedic,Orthopedic,True
+case_2316,first_200_chars,Orthopedic,Orthopedic,True
+case_2359,first_200_chars,Orthopedic,Orthopedic,True
+case_2376,first_200_chars,Ophthalmology,Cardiovascular / Pulmonary,False
+case_2386,first_200_chars,Ophthalmology,Ophthalmology,True
+case_2393,first_200_chars,Ophthalmology,Neurology,False
+case_2432,first_200_chars,Ophthalmology,Urology,False
+case_2444,first_200_chars,Ophthalmology,Ophthalmology,True
+case_2507,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2522,first_200_chars,Obstetrics / Gynecology,Gastroenterology,False
+case_2547,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2556,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2602,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2606,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2633,first_200_chars,Obstetrics / Gynecology,Cardiovascular / Pulmonary,False
+case_2643,first_200_chars,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2774,first_200_chars,Neurology,Orthopedic,False
+case_2838,first_200_chars,Neurology,Orthopedic,False
+case_2850,first_200_chars,Neurology,Obstetrics / Gynecology,False
+case_2874,first_200_chars,Neurology,Neurology,True
+case_2883,first_200_chars,Neurology,Orthopedic,False
+case_2937,first_200_chars,Neurology,Neurology,True
+case_2955,first_200_chars,Neurology,Neurology,True
+case_2956,first_200_chars,Neurology,Neurology,True
+case_2978,first_200_chars,Nephrology,Nephrology,True
+case_2985,first_200_chars,Nephrology,Obstetrics / Gynecology,False
+case_3027,first_200_chars,Nephrology,Nephrology,True
+case_3035,first_200_chars,Nephrology,Nephrology,True
+case_3036,first_200_chars,Nephrology,Nephrology,True
+case_3040,first_200_chars,Nephrology,Nephrology,True
+case_3042,first_200_chars,Nephrology,Nephrology,True
+case_3455,first_200_chars,Gastroenterology,Obstetrics / Gynecology,False
+case_3473,first_200_chars,Gastroenterology,Urology,False
+case_3475,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3486,first_200_chars,Gastroenterology,Obstetrics / Gynecology,False
+case_3526,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3532,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3565,first_200_chars,Gastroenterology,Urology,False
+case_3594,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3596,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3624,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3647,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3659,first_200_chars,Gastroenterology,Gastroenterology,True
+case_3721,first_200_chars,ENT - Otolaryngology,Urology,False
+case_3752,first_200_chars,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3759,first_200_chars,ENT - Otolaryngology,Orthopedic,False
+case_3767,first_200_chars,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3769,first_200_chars,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_4014,first_200_chars,Dermatology,Orthopedic,False
+case_4031,first_200_chars,Dermatology,Dermatology,True
+case_4613,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4617,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4624,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4664,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4670,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4677,first_200_chars,Cardiovascular / Pulmonary,ENT - Otolaryngology,False
+case_4680,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4681,first_200_chars,Cardiovascular / Pulmonary,Obstetrics / Gynecology,False
+case_4683,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4692,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4697,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4699,first_200_chars,Cardiovascular / Pulmonary,Orthopedic,False
+case_4706,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4709,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4745,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4748,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4769,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4823,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4824,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4832,first_200_chars,Cardiovascular / Pulmonary,Urology,False
+case_4833,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4843,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4858,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4859,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4863,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4896,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4900,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4904,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4906,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4909,first_200_chars,Cardiovascular / Pulmonary,Gastroenterology,False
+case_4931,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4945,first_200_chars,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4961,first_200_chars,Cardiovascular / Pulmonary,Orthopedic,False
+case_28,no_headers_dictation,Urology,Cardiovascular / Pulmonary,False
+case_32,no_headers_dictation,Urology,Cardiovascular / Pulmonary,False
+case_58,no_headers_dictation,Urology,Gastroenterology,False
+case_67,no_headers_dictation,Urology,Urology,True
+case_69,no_headers_dictation,Urology,Urology,True
+case_120,no_headers_dictation,Urology,Urology,True
+case_122,no_headers_dictation,Urology,Orthopedic,False
+case_139,no_headers_dictation,Urology,Orthopedic,False
+case_2008,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2037,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2065,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2078,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2083,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2085,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2091,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2095,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2112,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2135,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2155,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2181,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2210,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2213,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2254,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2279,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2303,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2310,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2316,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2359,no_headers_dictation,Orthopedic,Orthopedic,True
+case_2376,no_headers_dictation,Ophthalmology,Ophthalmology,True
+case_2386,no_headers_dictation,Ophthalmology,Ophthalmology,True
+case_2393,no_headers_dictation,Ophthalmology,Ophthalmology,True
+case_2432,no_headers_dictation,Ophthalmology,Ophthalmology,True
+case_2444,no_headers_dictation,Ophthalmology,Ophthalmology,True
+case_2507,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2522,no_headers_dictation,Obstetrics / Gynecology,Gastroenterology,False
+case_2547,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2556,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2602,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2606,no_headers_dictation,Obstetrics / Gynecology,Cardiovascular / Pulmonary,False
+case_2633,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2643,no_headers_dictation,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2774,no_headers_dictation,Neurology,Neurology,True
+case_2838,no_headers_dictation,Neurology,Neurology,True
+case_2850,no_headers_dictation,Neurology,Orthopedic,False
+case_2874,no_headers_dictation,Neurology,Orthopedic,False
+case_2883,no_headers_dictation,Neurology,Neurology,True
+case_2937,no_headers_dictation,Neurology,Neurology,True
+case_2955,no_headers_dictation,Neurology,Neurology,True
+case_2956,no_headers_dictation,Neurology,Orthopedic,False
+case_2978,no_headers_dictation,Nephrology,Nephrology,True
+case_2985,no_headers_dictation,Nephrology,Urology,False
+case_3027,no_headers_dictation,Nephrology,Nephrology,True
+case_3035,no_headers_dictation,Nephrology,Nephrology,True
+case_3036,no_headers_dictation,Nephrology,Nephrology,True
+case_3040,no_headers_dictation,Nephrology,Nephrology,True
+case_3042,no_headers_dictation,Nephrology,Nephrology,True
+case_3455,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3473,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3475,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3486,no_headers_dictation,Gastroenterology,Cardiovascular / Pulmonary,False
+case_3526,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3532,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3565,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3594,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3596,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3624,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3647,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3659,no_headers_dictation,Gastroenterology,Gastroenterology,True
+case_3721,no_headers_dictation,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3752,no_headers_dictation,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3759,no_headers_dictation,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3767,no_headers_dictation,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3769,no_headers_dictation,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_4014,no_headers_dictation,Dermatology,Orthopedic,False
+case_4031,no_headers_dictation,Dermatology,Dermatology,True
+case_4613,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4617,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4624,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4664,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4670,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4677,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4680,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4681,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4683,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4692,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4697,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4699,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4706,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4709,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4745,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4748,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4769,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4823,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4824,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4832,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4833,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4843,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4858,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4859,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4863,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4896,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4900,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4904,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4906,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4909,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4931,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4945,no_headers_dictation,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4961,no_headers_dictation,Cardiovascular / Pulmonary,Orthopedic,False
+case_28,intake_style,Urology,Ophthalmology,False
+case_32,intake_style,Urology,Urology,True
+case_58,intake_style,Urology,Urology,True
+case_67,intake_style,Urology,Urology,True
+case_69,intake_style,Urology,Urology,True
+case_120,intake_style,Urology,Orthopedic,False
+case_122,intake_style,Urology,ENT - Otolaryngology,False
+case_139,intake_style,Urology,Orthopedic,False
+case_2008,intake_style,Orthopedic,Orthopedic,True
+case_2037,intake_style,Orthopedic,Orthopedic,True
+case_2065,intake_style,Orthopedic,Orthopedic,True
+case_2078,intake_style,Orthopedic,Orthopedic,True
+case_2083,intake_style,Orthopedic,Orthopedic,True
+case_2085,intake_style,Orthopedic,Orthopedic,True
+case_2091,intake_style,Orthopedic,Orthopedic,True
+case_2095,intake_style,Orthopedic,Orthopedic,True
+case_2112,intake_style,Orthopedic,Orthopedic,True
+case_2135,intake_style,Orthopedic,Orthopedic,True
+case_2155,intake_style,Orthopedic,Orthopedic,True
+case_2181,intake_style,Orthopedic,Orthopedic,True
+case_2210,intake_style,Orthopedic,Orthopedic,True
+case_2213,intake_style,Orthopedic,Orthopedic,True
+case_2254,intake_style,Orthopedic,Orthopedic,True
+case_2279,intake_style,Orthopedic,Orthopedic,True
+case_2303,intake_style,Orthopedic,Orthopedic,True
+case_2310,intake_style,Orthopedic,Orthopedic,True
+case_2316,intake_style,Orthopedic,Orthopedic,True
+case_2359,intake_style,Orthopedic,Orthopedic,True
+case_2376,intake_style,Ophthalmology,Ophthalmology,True
+case_2386,intake_style,Ophthalmology,Ophthalmology,True
+case_2393,intake_style,Ophthalmology,Neurology,False
+case_2432,intake_style,Ophthalmology,Ophthalmology,True
+case_2444,intake_style,Ophthalmology,Cardiovascular / Pulmonary,False
+case_2507,intake_style,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2522,intake_style,Obstetrics / Gynecology,Gastroenterology,False
+case_2547,intake_style,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2556,intake_style,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2602,intake_style,Obstetrics / Gynecology,Nephrology,False
+case_2606,intake_style,Obstetrics / Gynecology,Cardiovascular / Pulmonary,False
+case_2633,intake_style,Obstetrics / Gynecology,Cardiovascular / Pulmonary,False
+case_2643,intake_style,Obstetrics / Gynecology,Obstetrics / Gynecology,True
+case_2774,intake_style,Neurology,Cardiovascular / Pulmonary,False
+case_2838,intake_style,Neurology,Orthopedic,False
+case_2850,intake_style,Neurology,Obstetrics / Gynecology,False
+case_2874,intake_style,Neurology,Neurology,True
+case_2883,intake_style,Neurology,Cardiovascular / Pulmonary,False
+case_2937,intake_style,Neurology,Neurology,True
+case_2955,intake_style,Neurology,Neurology,True
+case_2956,intake_style,Neurology,Gastroenterology,False
+case_2978,intake_style,Nephrology,Nephrology,True
+case_2985,intake_style,Nephrology,Urology,False
+case_3027,intake_style,Nephrology,Nephrology,True
+case_3035,intake_style,Nephrology,Nephrology,True
+case_3036,intake_style,Nephrology,Nephrology,True
+case_3040,intake_style,Nephrology,Nephrology,True
+case_3042,intake_style,Nephrology,Nephrology,True
+case_3455,intake_style,Gastroenterology,Obstetrics / Gynecology,False
+case_3473,intake_style,Gastroenterology,Gastroenterology,True
+case_3475,intake_style,Gastroenterology,Gastroenterology,True
+case_3486,intake_style,Gastroenterology,Cardiovascular / Pulmonary,False
+case_3526,intake_style,Gastroenterology,Gastroenterology,True
+case_3532,intake_style,Gastroenterology,Neurology,False
+case_3565,intake_style,Gastroenterology,Gastroenterology,True
+case_3594,intake_style,Gastroenterology,Gastroenterology,True
+case_3596,intake_style,Gastroenterology,Gastroenterology,True
+case_3624,intake_style,Gastroenterology,Gastroenterology,True
+case_3647,intake_style,Gastroenterology,Gastroenterology,True
+case_3659,intake_style,Gastroenterology,Cardiovascular / Pulmonary,False
+case_3721,intake_style,ENT - Otolaryngology,Urology,False
+case_3752,intake_style,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3759,intake_style,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3767,intake_style,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_3769,intake_style,ENT - Otolaryngology,ENT - Otolaryngology,True
+case_4014,intake_style,Dermatology,Orthopedic,False
+case_4031,intake_style,Dermatology,Urology,False
+case_4613,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4617,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4624,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4664,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4670,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4677,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4680,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4681,intake_style,Cardiovascular / Pulmonary,Obstetrics / Gynecology,False
+case_4683,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4692,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4697,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4699,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4706,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4709,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4745,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4748,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4769,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4823,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4824,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4832,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4833,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4843,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4858,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4859,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4863,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4896,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4900,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4904,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4906,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4909,intake_style,Cardiovascular / Pulmonary,Gastroenterology,False
+case_4931,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4945,intake_style,Cardiovascular / Pulmonary,Cardiovascular / Pulmonary,True
+case_4961,intake_style,Cardiovascular / Pulmonary,Orthopedic,False

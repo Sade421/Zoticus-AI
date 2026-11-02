@@ -1,0 +1,1 @@
+Stronger regularization (C=0.5 vs C=1.0) may reduce overfitting without changing class weights or text features.

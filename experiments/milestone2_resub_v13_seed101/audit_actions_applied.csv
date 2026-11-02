@@ -1,0 +1,21 @@
+case_id,decision_content_present,action,excluded,cut_position_in_source,cut_source,chars_before_audit,chars_after_audit,evidence,retained
+case_3662,yes,truncate,False,64.0,DISCHARGE DIAGNOSES,64,64,Contains clinical summary (Discharge Diagnoses or Hospital Course) which reveals post-decision outcomes.,True
+case_22,no,keep,False,,,896,896,No post-decision indicators found in clinical narrative.,True
+case_2797,no,keep,False,,,5174,5174,No post-decision indicators found in clinical narrative.,True
+case_3714,yes,exclude,True,,,2761,2761,Narrative details intraoperative surgical steps and techniques.,False
+case_2834,no,keep,False,,,5412,5412,No post-decision indicators found in clinical narrative.,True
+case_4031,no,keep,False,,,4825,4825,No post-decision indicators found in clinical narrative.,True
+case_4699,yes,truncate,False,104.0,DISCHARGE DIAGNOSES,104,104,Contains clinical summary (Discharge Diagnoses or Hospital Course) which reveals post-decision outcomes.,True
+case_4883,no,keep,False,,,2814,2814,No post-decision indicators found in clinical narrative.,True
+case_52,no,keep,False,,,4238,4238,No post-decision indicators found in clinical narrative.,True
+case_2088,no,keep,False,,,3838,3838,No post-decision indicators found in clinical narrative.,True
+case_2376,no,keep,False,,,1258,1258,No post-decision indicators found in clinical narrative.,True
+case_4809,no,keep,False,,,3119,3119,No post-decision indicators found in clinical narrative.,True
+case_4845,no,keep,False,,,1106,1106,No post-decision indicators found in clinical narrative.,True
+case_3610,no,keep,False,,,3057,3057,No post-decision indicators found in clinical narrative.,True
+case_2422,no,keep,False,,,250,250,No post-decision indicators found in clinical narrative.,True
+case_3486,yes,truncate,False,105.0,DISCHARGE DIAGNOSES,105,105,Contains clinical summary (Discharge Diagnoses or Hospital Course) which reveals post-decision outcomes.,True
+case_4687,no,keep,False,,,900,900,No post-decision indicators found in clinical narrative.,True
+case_89,yes,exclude,True,,,1538,1538,Narrative details intraoperative surgical steps and techniques.,False
+case_2626,yes,exclude,True,,,0,0,Contains detailed procedure notes of active vaginal delivery and repair.,False
+case_176,yes,exclude,True,,,1674,1674,Narrative details intraoperative surgical steps and techniques.,False

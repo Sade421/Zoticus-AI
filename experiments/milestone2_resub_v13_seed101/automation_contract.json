@@ -1,0 +1,17 @@
+{
+  "statuses": [
+    "EMERGENCY_ESCALATED",
+    "REVIEW_REQUIRED",
+    "NONEMERGENCY_ELIGIBLE"
+  ],
+  "emergency_or_review": "no specialty matcher or booking callback",
+  "combined_label": "human cardiology/pulmonology resolution before draft",
+  "api_failure": "review; never default to majority class",
+  "output": "specialty, safety_status, booking_allowed, staff_approval_required, draft_booking",
+  "future_dependencies": [
+    "validated screening provenance",
+    "confidence/review policy",
+    "qualified reviewer",
+    "n8n or Make integration"
+  ]
+}

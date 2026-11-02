@@ -1,0 +1,6 @@
+stage,rows,removed_since_previous
+raw_rows,4999,
+supported_nonempty,1773,3226.0
+exact_deduplicated,1692,81.0
+other_specialty_keyword_filtered,1552,140.0
+audited_min_length_retained,719,833.0
