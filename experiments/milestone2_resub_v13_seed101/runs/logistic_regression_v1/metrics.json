@@ -1,0 +1,16 @@
+{
+  "N": 108,
+  "A": 108,
+  "C": 92,
+  "coverage": 1.0,
+  "all_case_agreement": 0.8518518518518519,
+  "answered_agreement": 0.8518518518518519,
+  "failure_rate": 0.0,
+  "macro_f1_all_cases_fixed_labels": 0.83474307827249,
+  "wilson_low": 0.7728286547321882,
+  "wilson_high": 0.9067046847054198,
+  "wilson_assumption": "independent cases; descriptive if clustered",
+  "group_bootstrap_low": 0.7777777777777778,
+  "group_bootstrap_high": 0.9166666666666666,
+  "uncertainty_groups": 108
+}
