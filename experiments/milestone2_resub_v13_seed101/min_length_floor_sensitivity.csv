@@ -1,0 +1,12 @@
+medical_specialty,floor_1,floor_20,floor_40,floor_80,floor_120,floor_200
+Cardiovascular / Pulmonary,226,226,221,204,195,180
+Dermatology,17,17,17,16,16,14
+ENT - Otolaryngology,33,32,31,31,31,30
+Gastroenterology,79,79,77,73,68,62
+Nephrology,47,47,47,44,41,34
+Neurology,50,50,50,50,50,50
+Obstetrics / Gynecology,54,54,54,47,45,40
+Ophthalmology,32,32,32,32,29,29
+Orthopedic,136,135,134,121,109,97
+Urology,59,58,56,54,50,48
+ALL CLASSES,733,730,719,672,634,584

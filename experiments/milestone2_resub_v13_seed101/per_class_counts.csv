@@ -1,0 +1,51 @@
+experiment_id,model,specialty,correct,total
+milestone2_resub_v13_seed101,Majority class,Cardiovascular / Pulmonary,33,33
+milestone2_resub_v13_seed101,Majority class,Dermatology,0,2
+milestone2_resub_v13_seed101,Majority class,ENT - Otolaryngology,0,5
+milestone2_resub_v13_seed101,Majority class,Gastroenterology,0,12
+milestone2_resub_v13_seed101,Majority class,Nephrology,0,7
+milestone2_resub_v13_seed101,Majority class,Neurology,0,8
+milestone2_resub_v13_seed101,Majority class,Obstetrics / Gynecology,0,8
+milestone2_resub_v13_seed101,Majority class,Ophthalmology,0,5
+milestone2_resub_v13_seed101,Majority class,Orthopedic,0,20
+milestone2_resub_v13_seed101,Majority class,Urology,0,8
+milestone2_resub_v13_seed101,Keyword baseline,Cardiovascular / Pulmonary,26,33
+milestone2_resub_v13_seed101,Keyword baseline,Dermatology,1,2
+milestone2_resub_v13_seed101,Keyword baseline,ENT - Otolaryngology,5,5
+milestone2_resub_v13_seed101,Keyword baseline,Gastroenterology,5,12
+milestone2_resub_v13_seed101,Keyword baseline,Nephrology,1,7
+milestone2_resub_v13_seed101,Keyword baseline,Neurology,5,8
+milestone2_resub_v13_seed101,Keyword baseline,Obstetrics / Gynecology,2,8
+milestone2_resub_v13_seed101,Keyword baseline,Ophthalmology,3,5
+milestone2_resub_v13_seed101,Keyword baseline,Orthopedic,8,20
+milestone2_resub_v13_seed101,Keyword baseline,Urology,0,8
+milestone2_resub_v13_seed101,Logistic Regression,Cardiovascular / Pulmonary,29,33
+milestone2_resub_v13_seed101,Logistic Regression,Dermatology,2,2
+milestone2_resub_v13_seed101,Logistic Regression,ENT - Otolaryngology,5,5
+milestone2_resub_v13_seed101,Logistic Regression,Gastroenterology,10,12
+milestone2_resub_v13_seed101,Logistic Regression,Nephrology,7,7
+milestone2_resub_v13_seed101,Logistic Regression,Neurology,7,8
+milestone2_resub_v13_seed101,Logistic Regression,Obstetrics / Gynecology,6,8
+milestone2_resub_v13_seed101,Logistic Regression,Ophthalmology,5,5
+milestone2_resub_v13_seed101,Logistic Regression,Orthopedic,17,20
+milestone2_resub_v13_seed101,Logistic Regression,Urology,4,8
+milestone2_resub_v13_seed101,MLP 64,Cardiovascular / Pulmonary,31,33
+milestone2_resub_v13_seed101,MLP 64,Dermatology,1,2
+milestone2_resub_v13_seed101,MLP 64,ENT - Otolaryngology,5,5
+milestone2_resub_v13_seed101,MLP 64,Gastroenterology,11,12
+milestone2_resub_v13_seed101,MLP 64,Nephrology,6,7
+milestone2_resub_v13_seed101,MLP 64,Neurology,5,8
+milestone2_resub_v13_seed101,MLP 64,Obstetrics / Gynecology,7,8
+milestone2_resub_v13_seed101,MLP 64,Ophthalmology,4,5
+milestone2_resub_v13_seed101,MLP 64,Orthopedic,20,20
+milestone2_resub_v13_seed101,MLP 64,Urology,4,8
+milestone2_resub_v13_seed101,MLP 64-32,Cardiovascular / Pulmonary,33,33
+milestone2_resub_v13_seed101,MLP 64-32,Dermatology,1,2
+milestone2_resub_v13_seed101,MLP 64-32,ENT - Otolaryngology,5,5
+milestone2_resub_v13_seed101,MLP 64-32,Gastroenterology,8,12
+milestone2_resub_v13_seed101,MLP 64-32,Nephrology,6,7
+milestone2_resub_v13_seed101,MLP 64-32,Neurology,4,8
+milestone2_resub_v13_seed101,MLP 64-32,Obstetrics / Gynecology,6,8
+milestone2_resub_v13_seed101,MLP 64-32,Ophthalmology,4,5
+milestone2_resub_v13_seed101,MLP 64-32,Orthopedic,20,20
+milestone2_resub_v13_seed101,MLP 64-32,Urology,4,8

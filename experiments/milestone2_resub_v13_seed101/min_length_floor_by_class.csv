@@ -1,0 +1,12 @@
+medical_specialty,eligible,cut_at_start,short_1_to_39,removed_by_floor,retained,median_chars_retained,pct_removed
+ENT - Otolaryngology,94,61,2,63,31,1405.0,67.0
+Obstetrics / Gynecology,153,99,0,99,54,743.0,64.7
+Urology,154,95,3,98,56,1176.5,63.6
+Gastroenterology,203,124,2,126,77,1300.0,62.1
+Orthopedic,353,217,2,219,134,1148.0,62.0
+Ophthalmology,83,51,0,51,32,1264.5,61.4
+Dermatology,29,12,0,12,17,1080.0,41.4
+Cardiovascular / Pulmonary,359,133,5,138,221,1078.0,38.4
+Nephrology,67,20,0,20,47,994.0,29.9
+Neurology,53,3,0,3,50,4328.0,5.7
+ALL CLASSES,1548,815,14,829,719,,53.6

@@ -1,0 +1,9 @@
+{
+  "repository_commit": "536d834",
+  "run_at_utc": "2026-11-01T20:11:46.527559+00:00",
+  "notebook_sha256": "a0be65f1a85866789feb930f6b0224e73eba0020b271614f423bd5bffeeb1f47",
+  "python": "3.13.18",
+  "scikit_learn": "1.9.1",
+  "pandas": "3.0.5",
+  "numpy": "2.5.3"
+}

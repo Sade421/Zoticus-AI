@@ -1,0 +1,77 @@
+specialty,term,train_hits,train_target_hits,provenance
+Cardiovascular / Pulmonary,heart,162,69,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,cardiac,79,51,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,coronary,67,49,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,pulmonary,52,38,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,lung,125,50,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,chest pain,76,39,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,ejection fraction,17,14,inherited heuristic; predates this split; support shown on training partition for information only
+Cardiovascular / Pulmonary,artery,73,47,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,fracture,32,19,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,joint,47,19,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,knee,54,29,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,hip,34,13,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,shoulder,31,14,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,orthopedic,3,2,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,bone,26,12,inherited heuristic; predates this split; support shown on training partition for information only
+Orthopedic,ligament,7,4,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,abdomen,150,28,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,abdominal,63,19,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,colon,26,12,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,bowel,94,24,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,gastric,19,7,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,liver,53,13,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,gi ,18,4,inherited heuristic; predates this split; support shown on training partition for information only
+Gastroenterology,stomach,16,2,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,pregnant,5,3,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,uterus,12,11,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,cervix,9,9,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,ovary,3,2,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,vaginal,19,9,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,gestational,5,4,inherited heuristic; predates this split; support shown on training partition for information only
+Obstetrics / Gynecology,fetal,7,6,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,bladder,56,16,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,prostate,20,13,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,urinary,48,11,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,kidney stone,6,2,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,urology,11,3,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,urethra,7,6,inherited heuristic; predates this split; support shown on training partition for information only
+Urology,scrotal,5,5,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,renal,46,20,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,kidney,41,17,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,dialysis,11,7,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,nephro,20,12,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,creatinine,52,13,inherited heuristic; predates this split; support shown on training partition for information only
+Nephrology,glomerular,1,1,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,seizure,28,8,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,neurolog,92,24,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,headache,53,19,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,brain,29,14,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,cranial,44,21,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,stroke,31,11,inherited heuristic; predates this split; support shown on training partition for information only
+Neurology,weakness,48,15,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,throat,32,7,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,ear,343,17,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,nasal,35,13,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,sinus,56,8,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,tonsil,18,8,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,hearing,28,7,inherited heuristic; predates this split; support shown on training partition for information only
+ENT - Otolaryngology,larynx,4,4,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,skin,84,6,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,rash,39,5,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,lesion,61,3,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,dermat,14,4,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,mole,4,0,inherited heuristic; predates this split; support shown on training partition for information only
+Dermatology,biopsy of the skin,0,0,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,eye,67,18,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,vision,42,6,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,visual,49,10,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,ocular,42,14,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,retina,10,7,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,cornea,13,8,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,conjunctiv,26,3,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,eyelid,4,2,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,optic,11,4,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,macula,9,8,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,glaucoma,10,4,inherited heuristic; predates this split; support shown on training partition for information only
+Ophthalmology,cataract,17,8,inherited heuristic; predates this split; support shown on training partition for information only

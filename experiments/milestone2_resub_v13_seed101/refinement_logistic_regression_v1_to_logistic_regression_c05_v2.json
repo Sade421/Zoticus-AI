@@ -1,0 +1,9 @@
+{
+  "baseline_run": "logistic_regression_v1",
+  "refined_run": "logistic_regression_c05_v2",
+  "hypothesis": "Stronger regularization (C=0.5 vs C=1.0) may reduce overfitting without changing class weights or text features.",
+  "improvements": 0,
+  "regressions": 2,
+  "all_case_agreement_before": 0.8518518518518519,
+  "all_case_agreement_after": 0.8333333333333334
+}

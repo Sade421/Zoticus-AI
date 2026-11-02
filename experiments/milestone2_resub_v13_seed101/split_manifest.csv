@@ -1,0 +1,720 @@
+case_id,cluster_id,medical_specialty,split
+case_11,C_4,Cardiovascular / Pulmonary,train
+case_110,C_35,Urology,train
+case_117,C_36,Urology,train
+case_118,C_37,Urology,train
+case_119,C_38,Urology,train
+case_12,C_5,Neurology,test
+case_120,C_39,Urology,validation
+case_121,C_40,Urology,train
+case_122,C_41,Urology,validation
+case_126,C_42,Urology,train
+case_127,C_43,Urology,train
+case_128,C_44,Urology,train
+case_129,C_45,Urology,train
+case_130,C_46,Urology,train
+case_131,C_47,Urology,train
+case_132,C_48,Urology,train
+case_133,C_49,Urology,test
+case_137,C_50,Urology,train
+case_139,C_51,Urology,validation
+case_150,C_52,Urology,test
+case_154,C_53,Urology,train
+case_156,C_54,Urology,train
+case_161,C_55,Urology,test
+case_162,C_56,Urology,train
+case_166,C_57,Urology,train
+case_170,C_58,Urology,train
+case_171,C_59,Urology,train
+case_172,C_60,Urology,train
+case_175,C_61,Urology,train
+case_2008,C_62,Orthopedic,validation
+case_2012,C_63,Orthopedic,train
+case_2023,C_64,Orthopedic,train
+case_2033,C_65,Orthopedic,train
+case_2036,C_66,Orthopedic,train
+case_2037,C_67,Orthopedic,validation
+case_2051,C_68,Orthopedic,train
+case_2054,C_69,Orthopedic,train
+case_2055,C_70,Orthopedic,train
+case_2059,C_71,Orthopedic,train
+case_2061,C_72,Orthopedic,train
+case_2064,C_73,Orthopedic,train
+case_2065,C_74,Orthopedic,validation
+case_2067,C_75,Orthopedic,train
+case_2069,C_76,Orthopedic,train
+case_2074,C_77,Orthopedic,train
+case_2077,C_78,Orthopedic,train
+case_2078,C_79,Orthopedic,validation
+case_2083,C_80,Orthopedic,validation
+case_2085,C_81,Orthopedic,validation
+case_2088,C_82,Orthopedic,train
+case_2089,C_83,Orthopedic,train
+case_2090,C_84,Orthopedic,train
+case_2091,C_85,Orthopedic,validation
+case_2092,C_86,Orthopedic,train
+case_2093,C_87,Orthopedic,train
+case_2094,C_88,Orthopedic,train
+case_2095,C_89,Orthopedic,validation
+case_2097,C_90,Orthopedic,train
+case_2101,C_91,Orthopedic,train
+case_2102,C_92,Orthopedic,train
+case_2105,C_93,Orthopedic,train
+case_2109,C_94,Orthopedic,train
+case_2112,C_95,Orthopedic,validation
+case_2114,C_96,Orthopedic,train
+case_2118,C_97,Orthopedic,train
+case_2119,C_98,Orthopedic,test
+case_2120,C_99,Orthopedic,train
+case_2123,C_100,Orthopedic,train
+case_2125,C_101,Orthopedic,train
+case_2126,C_102,Orthopedic,train
+case_2127,C_103,Orthopedic,test
+case_2128,C_104,Orthopedic,train
+case_2129,C_105,Orthopedic,test
+case_2130,C_106,Orthopedic,train
+case_2131,C_107,Orthopedic,test
+case_2132,C_108,Orthopedic,train
+case_2133,C_109,Orthopedic,test
+case_2134,C_110,Orthopedic,train
+case_2135,C_111,Orthopedic,validation
+case_2136,C_112,Orthopedic,train
+case_2137,C_113,Orthopedic,train
+case_2138,C_114,Orthopedic,test
+case_2139,C_115,Orthopedic,train
+case_2140,C_116,Orthopedic,train
+case_2141,C_117,Orthopedic,train
+case_2142,C_118,Orthopedic,test
+case_2143,C_119,Orthopedic,train
+case_2144,C_120,Orthopedic,train
+case_2145,C_121,Orthopedic,train
+case_2148,C_122,Orthopedic,test
+case_2149,C_123,Orthopedic,train
+case_2150,C_124,Orthopedic,train
+case_2151,C_125,Orthopedic,train
+case_2152,C_126,Orthopedic,test
+case_2153,C_127,Orthopedic,test
+case_2155,C_128,Orthopedic,validation
+case_2156,C_129,Orthopedic,train
+case_2159,C_130,Orthopedic,train
+case_2163,C_131,Orthopedic,train
+case_2167,C_132,Orthopedic,train
+case_2169,C_133,Orthopedic,train
+case_2171,C_134,Orthopedic,train
+case_2172,C_135,Orthopedic,train
+case_2177,C_136,Orthopedic,test
+case_2179,C_137,Orthopedic,train
+case_2180,C_138,Orthopedic,train
+case_2181,C_139,Orthopedic,validation
+case_2184,C_140,Orthopedic,train
+case_2186,C_141,Orthopedic,test
+case_2187,C_142,Orthopedic,train
+case_2190,C_143,Orthopedic,train
+case_2193,C_144,Orthopedic,train
+case_2194,C_145,Orthopedic,train
+case_2198,C_146,Orthopedic,test
+case_22,C_6,Urology,test
+case_2200,C_147,Orthopedic,test
+case_2203,C_148,Orthopedic,train
+case_2205,C_149,Orthopedic,train
+case_2208,C_150,Orthopedic,train
+case_2210,C_151,Orthopedic,validation
+case_2211,C_152,Orthopedic,test
+case_2213,C_153,Orthopedic,validation
+case_2214,C_154,Orthopedic,test
+case_2216,C_155,Orthopedic,train
+case_2218,C_156,Orthopedic,train
+case_2219,C_157,Orthopedic,train
+case_2224,C_158,Orthopedic,train
+case_2228,C_159,Orthopedic,train
+case_2229,C_160,Orthopedic,train
+case_2233,C_161,Orthopedic,train
+case_2235,C_162,Orthopedic,train
+case_2239,C_163,Orthopedic,test
+case_2240,C_164,Orthopedic,train
+case_2243,C_165,Orthopedic,train
+case_2245,C_166,Orthopedic,test
+case_2251,C_167,Orthopedic,train
+case_2254,C_168,Orthopedic,validation
+case_2255,C_169,Orthopedic,train
+case_2259,C_170,Orthopedic,train
+case_2260,C_171,Orthopedic,train
+case_2261,C_170,Orthopedic,train
+case_2262,C_172,Orthopedic,train
+case_2263,C_173,Orthopedic,train
+case_2264,C_174,Orthopedic,test
+case_2266,C_175,Orthopedic,train
+case_2267,C_176,Orthopedic,train
+case_2268,C_177,Orthopedic,train
+case_2271,C_178,Orthopedic,train
+case_2274,C_179,Orthopedic,train
+case_2279,C_180,Orthopedic,validation
+case_2300,C_181,Orthopedic,train
+case_2302,C_182,Orthopedic,train
+case_2303,C_183,Orthopedic,validation
+case_2305,C_184,Orthopedic,train
+case_2306,C_185,Orthopedic,train
+case_2309,C_186,Orthopedic,train
+case_2310,C_187,Orthopedic,validation
+case_2313,C_188,Orthopedic,train
+case_2316,C_189,Orthopedic,validation
+case_2337,C_190,Orthopedic,train
+case_2357,C_191,Orthopedic,train
+case_2359,C_192,Orthopedic,validation
+case_2362,C_193,Orthopedic,train
+case_2365,C_194,Orthopedic,test
+case_2373,C_195,Ophthalmology,train
+case_2374,C_196,Ophthalmology,train
+case_2376,C_197,Ophthalmology,validation
+case_2380,C_198,Ophthalmology,test
+case_2386,C_199,Ophthalmology,validation
+case_2393,C_200,Ophthalmology,validation
+case_2395,C_201,Ophthalmology,train
+case_2396,C_202,Ophthalmology,train
+case_2398,C_203,Ophthalmology,train
+case_2411,C_204,Ophthalmology,train
+case_2412,C_205,Ophthalmology,train
+case_2414,C_206,Ophthalmology,train
+case_2415,C_207,Ophthalmology,train
+case_2416,C_208,Ophthalmology,train
+case_2417,C_209,Ophthalmology,train
+case_2418,C_210,Ophthalmology,train
+case_2419,C_211,Ophthalmology,train
+case_2420,C_212,Ophthalmology,train
+case_2422,C_213,Ophthalmology,train
+case_2424,C_214,Ophthalmology,train
+case_2426,C_215,Ophthalmology,train
+case_2428,C_216,Ophthalmology,train
+case_2429,C_217,Ophthalmology,test
+case_2432,C_218,Ophthalmology,validation
+case_2433,C_219,Ophthalmology,test
+case_2434,C_220,Ophthalmology,train
+case_2435,C_221,Ophthalmology,train
+case_2437,C_222,Ophthalmology,test
+case_2442,C_223,Ophthalmology,test
+case_2443,C_224,Ophthalmology,train
+case_2444,C_225,Ophthalmology,validation
+case_2446,C_226,Ophthalmology,train
+case_2501,C_227,Obstetrics / Gynecology,train
+case_2505,C_228,Obstetrics / Gynecology,train
+case_2506,C_229,Obstetrics / Gynecology,train
+case_2507,C_230,Obstetrics / Gynecology,validation
+case_2510,C_231,Obstetrics / Gynecology,test
+case_2511,C_232,Obstetrics / Gynecology,train
+case_2513,C_233,Obstetrics / Gynecology,train
+case_2514,C_234,Obstetrics / Gynecology,train
+case_2515,C_235,Obstetrics / Gynecology,train
+case_2516,C_236,Obstetrics / Gynecology,train
+case_2517,C_237,Obstetrics / Gynecology,train
+case_2519,C_238,Obstetrics / Gynecology,train
+case_2522,C_239,Obstetrics / Gynecology,validation
+case_2524,C_240,Obstetrics / Gynecology,train
+case_2530,C_241,Obstetrics / Gynecology,test
+case_2536,C_242,Obstetrics / Gynecology,train
+case_2547,C_243,Obstetrics / Gynecology,validation
+case_2548,C_244,Obstetrics / Gynecology,train
+case_2551,C_245,Obstetrics / Gynecology,train
+case_2552,C_246,Obstetrics / Gynecology,train
+case_2553,C_247,Obstetrics / Gynecology,train
+case_2554,C_248,Obstetrics / Gynecology,test
+case_2555,C_249,Obstetrics / Gynecology,train
+case_2556,C_250,Obstetrics / Gynecology,validation
+case_2558,C_251,Obstetrics / Gynecology,train
+case_2559,C_252,Obstetrics / Gynecology,train
+case_2561,C_253,Obstetrics / Gynecology,train
+case_2575,C_254,Obstetrics / Gynecology,test
+case_2593,C_255,Obstetrics / Gynecology,train
+case_2596,C_256,Obstetrics / Gynecology,train
+case_2600,C_257,Obstetrics / Gynecology,test
+case_2602,C_258,Obstetrics / Gynecology,validation
+case_2604,C_259,Obstetrics / Gynecology,train
+case_2605,C_260,Obstetrics / Gynecology,train
+case_2606,C_261,Obstetrics / Gynecology,validation
+case_2607,C_262,Obstetrics / Gynecology,train
+case_2608,C_263,Obstetrics / Gynecology,train
+case_2611,C_264,Obstetrics / Gynecology,train
+case_2612,C_265,Obstetrics / Gynecology,test
+case_2615,C_266,Obstetrics / Gynecology,train
+case_2617,C_267,Obstetrics / Gynecology,train
+case_2621,C_268,Obstetrics / Gynecology,train
+case_2627,C_269,Obstetrics / Gynecology,test
+case_2628,C_270,Obstetrics / Gynecology,train
+case_2633,C_271,Obstetrics / Gynecology,validation
+case_2637,C_242,Obstetrics / Gynecology,train
+case_2639,C_272,Obstetrics / Gynecology,train
+case_2640,C_273,Obstetrics / Gynecology,test
+case_2643,C_274,Obstetrics / Gynecology,validation
+case_2651,C_275,Obstetrics / Gynecology,train
+case_2654,C_276,Obstetrics / Gynecology,train
+case_2655,C_277,Obstetrics / Gynecology,train
+case_2659,C_278,Obstetrics / Gynecology,train
+case_2663,C_279,Obstetrics / Gynecology,train
+case_2761,C_280,Neurology,train
+case_2769,C_281,Neurology,train
+case_2774,C_282,Neurology,validation
+case_2788,C_283,Neurology,train
+case_2789,C_284,Neurology,train
+case_2790,C_285,Neurology,train
+case_2791,C_286,Neurology,train
+case_2793,C_287,Neurology,test
+case_2794,C_288,Neurology,train
+case_2796,C_289,Neurology,train
+case_2797,C_290,Neurology,train
+case_28,C_7,Urology,validation
+case_2801,C_291,Neurology,train
+case_2802,C_292,Neurology,train
+case_2803,C_293,Neurology,train
+case_2807,C_294,Neurology,train
+case_2808,C_295,Neurology,train
+case_2831,C_296,Neurology,train
+case_2834,C_297,Neurology,train
+case_2836,C_298,Neurology,train
+case_2838,C_299,Neurology,validation
+case_2850,C_300,Neurology,validation
+case_2851,C_301,Neurology,train
+case_2856,C_302,Neurology,train
+case_2862,C_303,Neurology,train
+case_2864,C_304,Neurology,train
+case_2866,C_305,Neurology,train
+case_2867,C_306,Neurology,train
+case_2873,C_307,Neurology,test
+case_2874,C_308,Neurology,validation
+case_2875,C_309,Neurology,train
+case_2878,C_310,Neurology,train
+case_2881,C_311,Neurology,train
+case_2883,C_312,Neurology,validation
+case_2884,C_313,Neurology,test
+case_2887,C_314,Neurology,train
+case_2905,C_315,Neurology,train
+case_2908,C_316,Neurology,test
+case_2931,C_317,Neurology,test
+case_2937,C_318,Neurology,validation
+case_2943,C_319,Neurology,train
+case_2944,C_320,Neurology,train
+case_2946,C_321,Neurology,train
+case_2948,C_322,Neurology,train
+case_2955,C_323,Neurology,validation
+case_2956,C_324,Neurology,validation
+case_2959,C_325,Neurology,train
+case_2971,C_326,Neurology,test
+case_2974,C_327,Nephrology,train
+case_2976,C_328,Neurology,train
+case_2977,C_329,Nephrology,train
+case_2978,C_330,Nephrology,validation
+case_2979,C_331,Nephrology,train
+case_2982,C_332,Neurology,train
+case_2983,C_333,Nephrology,train
+case_2984,C_334,Nephrology,train
+case_2985,C_335,Nephrology,validation
+case_2986,C_336,Nephrology,train
+case_2987,C_337,Nephrology,train
+case_2988,C_338,Nephrology,train
+case_2989,C_339,Nephrology,train
+case_2992,C_340,Nephrology,train
+case_2993,C_341,Nephrology,train
+case_2994,C_342,Nephrology,train
+case_2996,C_343,Nephrology,train
+case_2997,C_344,Nephrology,train
+case_2998,C_345,Nephrology,train
+case_3,C_0,Cardiovascular / Pulmonary,train
+case_30,C_8,Urology,train
+case_3003,C_346,Nephrology,test
+case_3011,C_347,Nephrology,train
+case_3012,C_348,Nephrology,test
+case_3013,C_349,Nephrology,train
+case_3014,C_350,Nephrology,train
+case_3015,C_351,Nephrology,train
+case_3026,C_352,Nephrology,train
+case_3027,C_353,Nephrology,validation
+case_3028,C_354,Nephrology,test
+case_3029,C_355,Nephrology,train
+case_3031,C_356,Nephrology,train
+case_3032,C_357,Nephrology,train
+case_3033,C_358,Nephrology,train
+case_3035,C_359,Nephrology,validation
+case_3036,C_360,Nephrology,validation
+case_3037,C_361,Nephrology,test
+case_3038,C_362,Nephrology,test
+case_3039,C_363,Nephrology,train
+case_3040,C_364,Nephrology,validation
+case_3041,C_365,Nephrology,train
+case_3042,C_366,Nephrology,validation
+case_3043,C_367,Nephrology,test
+case_3044,C_368,Nephrology,train
+case_3045,C_369,Nephrology,test
+case_3046,C_370,Nephrology,train
+case_3047,C_371,Nephrology,train
+case_3048,C_372,Nephrology,train
+case_3049,C_373,Nephrology,train
+case_3054,C_374,Nephrology,train
+case_3055,C_375,Nephrology,train
+case_31,C_9,Urology,test
+case_32,C_10,Urology,validation
+case_34,C_11,Urology,test
+case_3455,C_376,Gastroenterology,validation
+case_3462,C_377,Gastroenterology,train
+case_3465,C_378,Gastroenterology,train
+case_3466,C_379,Gastroenterology,test
+case_3471,C_380,Gastroenterology,train
+case_3472,C_381,Gastroenterology,train
+case_3473,C_382,Gastroenterology,validation
+case_3474,C_383,Gastroenterology,train
+case_3475,C_384,Gastroenterology,validation
+case_3477,C_385,Gastroenterology,test
+case_3483,C_386,Gastroenterology,train
+case_3484,C_387,Gastroenterology,train
+case_3485,C_388,Gastroenterology,train
+case_3486,C_389,Gastroenterology,validation
+case_3487,C_390,Gastroenterology,train
+case_3488,C_391,Gastroenterology,train
+case_35,C_12,Urology,train
+case_3509,C_392,Gastroenterology,train
+case_3518,C_393,Gastroenterology,train
+case_3521,C_394,Gastroenterology,train
+case_3523,C_395,Gastroenterology,train
+case_3525,C_396,Gastroenterology,test
+case_3526,C_397,Gastroenterology,validation
+case_3527,C_398,Gastroenterology,train
+case_3528,C_399,Gastroenterology,train
+case_3532,C_400,Gastroenterology,validation
+case_3533,C_401,Gastroenterology,test
+case_3534,C_402,Gastroenterology,train
+case_3535,C_403,Gastroenterology,test
+case_3541,C_404,Gastroenterology,train
+case_3544,C_405,Gastroenterology,test
+case_3548,C_406,Gastroenterology,test
+case_3560,C_407,Gastroenterology,train
+case_3565,C_408,Gastroenterology,validation
+case_3566,C_409,Gastroenterology,test
+case_3577,C_410,Gastroenterology,train
+case_3583,C_411,Gastroenterology,train
+case_3584,C_412,Gastroenterology,train
+case_3586,C_413,Gastroenterology,train
+case_3589,C_414,Gastroenterology,train
+case_3591,C_415,Gastroenterology,train
+case_3594,C_416,Gastroenterology,validation
+case_3595,C_417,Gastroenterology,train
+case_3596,C_418,Gastroenterology,validation
+case_3597,C_419,Gastroenterology,test
+case_3607,C_420,Gastroenterology,train
+case_3609,C_421,Gastroenterology,train
+case_3610,C_422,Gastroenterology,test
+case_3612,C_423,Gastroenterology,test
+case_3616,C_424,Gastroenterology,train
+case_3617,C_425,Gastroenterology,train
+case_3618,C_426,Gastroenterology,train
+case_3622,C_427,Gastroenterology,train
+case_3623,C_428,Gastroenterology,train
+case_3624,C_429,Gastroenterology,validation
+case_3627,C_430,Gastroenterology,train
+case_3628,C_431,Gastroenterology,train
+case_3642,C_432,Gastroenterology,train
+case_3647,C_433,Gastroenterology,validation
+case_3652,C_434,Gastroenterology,train
+case_3655,C_435,Gastroenterology,train
+case_3656,C_436,Gastroenterology,train
+case_3657,C_437,Gastroenterology,train
+case_3659,C_438,Gastroenterology,validation
+case_3662,C_439,Gastroenterology,train
+case_3664,C_440,Gastroenterology,train
+case_3666,C_441,Gastroenterology,train
+case_3668,C_442,Gastroenterology,train
+case_3669,C_443,Gastroenterology,train
+case_3670,C_444,Gastroenterology,train
+case_3671,C_445,Gastroenterology,train
+case_3672,C_446,Gastroenterology,train
+case_3673,C_447,Gastroenterology,train
+case_3678,C_448,Gastroenterology,train
+case_3679,C_449,Gastroenterology,train
+case_3681,C_450,Gastroenterology,test
+case_3683,C_451,Gastroenterology,train
+case_3685,C_452,Gastroenterology,train
+case_3687,C_453,ENT - Otolaryngology,train
+case_3692,C_454,ENT - Otolaryngology,train
+case_3694,C_455,ENT - Otolaryngology,train
+case_3706,C_456,ENT - Otolaryngology,test
+case_3709,C_457,ENT - Otolaryngology,train
+case_3711,C_458,ENT - Otolaryngology,train
+case_3712,C_459,ENT - Otolaryngology,train
+case_3715,C_460,ENT - Otolaryngology,train
+case_3721,C_461,ENT - Otolaryngology,validation
+case_3722,C_462,ENT - Otolaryngology,test
+case_3723,C_463,ENT - Otolaryngology,train
+case_3724,C_464,ENT - Otolaryngology,train
+case_3726,C_465,ENT - Otolaryngology,train
+case_3727,C_466,ENT - Otolaryngology,train
+case_3728,C_467,ENT - Otolaryngology,train
+case_3729,C_468,ENT - Otolaryngology,test
+case_3730,C_469,ENT - Otolaryngology,train
+case_3748,C_470,ENT - Otolaryngology,train
+case_3749,C_471,ENT - Otolaryngology,train
+case_3752,C_472,ENT - Otolaryngology,validation
+case_3754,C_473,ENT - Otolaryngology,train
+case_3755,C_474,ENT - Otolaryngology,test
+case_3759,C_475,ENT - Otolaryngology,validation
+case_3760,C_476,ENT - Otolaryngology,test
+case_3762,C_477,ENT - Otolaryngology,train
+case_3763,C_478,ENT - Otolaryngology,train
+case_3766,C_479,ENT - Otolaryngology,train
+case_3767,C_480,ENT - Otolaryngology,validation
+case_3769,C_481,ENT - Otolaryngology,validation
+case_3770,C_482,ENT - Otolaryngology,train
+case_3780,C_483,ENT - Otolaryngology,train
+case_39,C_13,Urology,train
+case_4,C_1,Cardiovascular / Pulmonary,train
+case_4001,C_484,Dermatology,train
+case_4003,C_485,Dermatology,train
+case_4004,C_486,Dermatology,test
+case_4005,C_487,Dermatology,train
+case_4007,C_488,Dermatology,train
+case_4008,C_489,Dermatology,train
+case_4010,C_490,Dermatology,test
+case_4012,C_491,Dermatology,train
+case_4013,C_492,Dermatology,train
+case_4014,C_493,Dermatology,validation
+case_4017,C_494,Dermatology,test
+case_4020,C_495,Dermatology,train
+case_4021,C_496,Dermatology,train
+case_4024,C_497,Dermatology,train
+case_4027,C_498,Dermatology,train
+case_4031,C_499,Dermatology,validation
+case_4032,C_500,Dermatology,train
+case_42,C_14,Urology,test
+case_45,C_15,Urology,test
+case_4609,C_501,Cardiovascular / Pulmonary,test
+case_4612,C_502,Cardiovascular / Pulmonary,train
+case_4613,C_503,Cardiovascular / Pulmonary,validation
+case_4616,C_504,Cardiovascular / Pulmonary,train
+case_4617,C_505,Cardiovascular / Pulmonary,validation
+case_4618,C_506,Cardiovascular / Pulmonary,train
+case_4621,C_507,Cardiovascular / Pulmonary,test
+case_4622,C_508,Cardiovascular / Pulmonary,train
+case_4623,C_509,Cardiovascular / Pulmonary,train
+case_4624,C_510,Cardiovascular / Pulmonary,validation
+case_4625,C_511,Cardiovascular / Pulmonary,train
+case_4626,C_512,Cardiovascular / Pulmonary,train
+case_4629,C_513,Cardiovascular / Pulmonary,train
+case_4631,C_514,Cardiovascular / Pulmonary,train
+case_4636,C_515,Cardiovascular / Pulmonary,test
+case_4646,C_516,Cardiovascular / Pulmonary,train
+case_4647,C_517,Cardiovascular / Pulmonary,train
+case_4651,C_518,Cardiovascular / Pulmonary,train
+case_4652,C_519,Cardiovascular / Pulmonary,train
+case_4653,C_520,Cardiovascular / Pulmonary,train
+case_4655,C_521,Cardiovascular / Pulmonary,train
+case_4661,C_522,Cardiovascular / Pulmonary,train
+case_4664,C_523,Cardiovascular / Pulmonary,validation
+case_4665,C_524,Cardiovascular / Pulmonary,train
+case_4666,C_525,Cardiovascular / Pulmonary,train
+case_4667,C_526,Cardiovascular / Pulmonary,train
+case_4668,C_527,Cardiovascular / Pulmonary,train
+case_4669,C_528,Cardiovascular / Pulmonary,train
+case_4670,C_529,Cardiovascular / Pulmonary,validation
+case_4671,C_530,Cardiovascular / Pulmonary,train
+case_4672,C_531,Cardiovascular / Pulmonary,train
+case_4674,C_532,Cardiovascular / Pulmonary,train
+case_4675,C_533,Cardiovascular / Pulmonary,train
+case_4676,C_534,Cardiovascular / Pulmonary,train
+case_4677,C_535,Cardiovascular / Pulmonary,validation
+case_4678,C_536,Cardiovascular / Pulmonary,test
+case_4679,C_537,Cardiovascular / Pulmonary,train
+case_4680,C_538,Cardiovascular / Pulmonary,validation
+case_4681,C_539,Cardiovascular / Pulmonary,validation
+case_4682,C_540,Cardiovascular / Pulmonary,test
+case_4683,C_541,Cardiovascular / Pulmonary,validation
+case_4684,C_542,Cardiovascular / Pulmonary,train
+case_4685,C_543,Cardiovascular / Pulmonary,train
+case_4686,C_544,Cardiovascular / Pulmonary,train
+case_4687,C_545,Cardiovascular / Pulmonary,test
+case_4688,C_546,Cardiovascular / Pulmonary,train
+case_4689,C_547,Cardiovascular / Pulmonary,train
+case_4690,C_548,Cardiovascular / Pulmonary,train
+case_4692,C_549,Cardiovascular / Pulmonary,validation
+case_4694,C_550,Cardiovascular / Pulmonary,train
+case_4695,C_551,Cardiovascular / Pulmonary,train
+case_4696,C_552,Cardiovascular / Pulmonary,train
+case_4697,C_553,Cardiovascular / Pulmonary,validation
+case_4699,C_554,Cardiovascular / Pulmonary,validation
+case_4700,C_555,Cardiovascular / Pulmonary,test
+case_4701,C_556,Cardiovascular / Pulmonary,test
+case_4706,C_557,Cardiovascular / Pulmonary,validation
+case_4707,C_558,Cardiovascular / Pulmonary,train
+case_4708,C_559,Cardiovascular / Pulmonary,test
+case_4709,C_560,Cardiovascular / Pulmonary,validation
+case_4711,C_561,Cardiovascular / Pulmonary,train
+case_4713,C_562,Cardiovascular / Pulmonary,train
+case_4714,C_563,Cardiovascular / Pulmonary,train
+case_4717,C_564,Cardiovascular / Pulmonary,train
+case_4718,C_565,Cardiovascular / Pulmonary,train
+case_4720,C_566,Cardiovascular / Pulmonary,test
+case_4721,C_567,Cardiovascular / Pulmonary,train
+case_4722,C_568,Cardiovascular / Pulmonary,test
+case_4723,C_569,Cardiovascular / Pulmonary,train
+case_4727,C_570,Cardiovascular / Pulmonary,train
+case_4729,C_571,Cardiovascular / Pulmonary,test
+case_4730,C_572,Cardiovascular / Pulmonary,train
+case_4731,C_573,Cardiovascular / Pulmonary,train
+case_4734,C_574,Cardiovascular / Pulmonary,train
+case_4736,C_575,Cardiovascular / Pulmonary,train
+case_4738,C_576,Cardiovascular / Pulmonary,train
+case_4739,C_577,Cardiovascular / Pulmonary,test
+case_4740,C_578,Cardiovascular / Pulmonary,train
+case_4741,C_579,Cardiovascular / Pulmonary,test
+case_4743,C_580,Cardiovascular / Pulmonary,train
+case_4744,C_581,Cardiovascular / Pulmonary,train
+case_4745,C_582,Cardiovascular / Pulmonary,validation
+case_4746,C_583,Cardiovascular / Pulmonary,test
+case_4748,C_584,Cardiovascular / Pulmonary,validation
+case_4750,C_585,Cardiovascular / Pulmonary,train
+case_4751,C_586,Cardiovascular / Pulmonary,train
+case_4752,C_587,Cardiovascular / Pulmonary,train
+case_4753,C_588,Cardiovascular / Pulmonary,train
+case_4754,C_589,Cardiovascular / Pulmonary,train
+case_4755,C_590,Cardiovascular / Pulmonary,train
+case_4758,C_591,Cardiovascular / Pulmonary,test
+case_4759,C_592,Cardiovascular / Pulmonary,train
+case_4761,C_593,Cardiovascular / Pulmonary,train
+case_4762,C_594,Cardiovascular / Pulmonary,train
+case_4763,C_595,Cardiovascular / Pulmonary,train
+case_4764,C_596,Cardiovascular / Pulmonary,train
+case_4769,C_597,Cardiovascular / Pulmonary,validation
+case_4772,C_598,Cardiovascular / Pulmonary,train
+case_4777,C_599,Cardiovascular / Pulmonary,train
+case_4778,C_600,Cardiovascular / Pulmonary,train
+case_4779,C_601,Cardiovascular / Pulmonary,train
+case_4780,C_602,Cardiovascular / Pulmonary,train
+case_4782,C_603,Cardiovascular / Pulmonary,train
+case_4784,C_604,Cardiovascular / Pulmonary,train
+case_4785,C_605,Cardiovascular / Pulmonary,train
+case_4789,C_606,Cardiovascular / Pulmonary,test
+case_4792,C_607,Cardiovascular / Pulmonary,test
+case_4795,C_608,Cardiovascular / Pulmonary,train
+case_4807,C_609,Cardiovascular / Pulmonary,train
+case_4809,C_610,Cardiovascular / Pulmonary,train
+case_4810,C_611,Cardiovascular / Pulmonary,test
+case_4812,C_612,Cardiovascular / Pulmonary,train
+case_4814,C_613,Cardiovascular / Pulmonary,train
+case_4816,C_614,Cardiovascular / Pulmonary,train
+case_4817,C_615,Cardiovascular / Pulmonary,train
+case_4819,C_616,Cardiovascular / Pulmonary,train
+case_4820,C_617,Cardiovascular / Pulmonary,train
+case_4822,C_618,Cardiovascular / Pulmonary,train
+case_4823,C_619,Cardiovascular / Pulmonary,validation
+case_4824,C_620,Cardiovascular / Pulmonary,validation
+case_4825,C_621,Cardiovascular / Pulmonary,train
+case_4831,C_622,Cardiovascular / Pulmonary,test
+case_4832,C_623,Cardiovascular / Pulmonary,validation
+case_4833,C_624,Cardiovascular / Pulmonary,validation
+case_4835,C_625,Cardiovascular / Pulmonary,train
+case_4837,C_626,Cardiovascular / Pulmonary,train
+case_4838,C_627,Cardiovascular / Pulmonary,train
+case_4839,C_628,Cardiovascular / Pulmonary,test
+case_4841,C_629,Cardiovascular / Pulmonary,train
+case_4842,C_630,Cardiovascular / Pulmonary,train
+case_4843,C_631,Cardiovascular / Pulmonary,validation
+case_4844,C_632,Cardiovascular / Pulmonary,test
+case_4845,C_633,Cardiovascular / Pulmonary,test
+case_4846,C_634,Cardiovascular / Pulmonary,test
+case_4847,C_635,Cardiovascular / Pulmonary,train
+case_4848,C_636,Cardiovascular / Pulmonary,test
+case_4849,C_637,Cardiovascular / Pulmonary,train
+case_4850,C_638,Cardiovascular / Pulmonary,train
+case_4851,C_639,Cardiovascular / Pulmonary,train
+case_4852,C_640,Cardiovascular / Pulmonary,train
+case_4853,C_641,Cardiovascular / Pulmonary,train
+case_4854,C_642,Cardiovascular / Pulmonary,train
+case_4855,C_643,Cardiovascular / Pulmonary,train
+case_4856,C_644,Cardiovascular / Pulmonary,train
+case_4857,C_645,Cardiovascular / Pulmonary,train
+case_4858,C_646,Cardiovascular / Pulmonary,validation
+case_4859,C_647,Cardiovascular / Pulmonary,validation
+case_4860,C_648,Cardiovascular / Pulmonary,train
+case_4861,C_649,Cardiovascular / Pulmonary,train
+case_4862,C_650,Cardiovascular / Pulmonary,train
+case_4863,C_651,Cardiovascular / Pulmonary,validation
+case_4864,C_652,Cardiovascular / Pulmonary,train
+case_4865,C_653,Cardiovascular / Pulmonary,test
+case_4867,C_654,Cardiovascular / Pulmonary,train
+case_4870,C_655,Cardiovascular / Pulmonary,train
+case_4871,C_656,Cardiovascular / Pulmonary,train
+case_4873,C_657,Cardiovascular / Pulmonary,train
+case_4875,C_658,Cardiovascular / Pulmonary,test
+case_4878,C_659,Cardiovascular / Pulmonary,train
+case_4879,C_660,Cardiovascular / Pulmonary,train
+case_4882,C_661,Cardiovascular / Pulmonary,train
+case_4883,C_662,Cardiovascular / Pulmonary,train
+case_4889,C_663,Cardiovascular / Pulmonary,train
+case_4890,C_664,Cardiovascular / Pulmonary,test
+case_4891,C_665,Cardiovascular / Pulmonary,train
+case_4892,C_666,Cardiovascular / Pulmonary,train
+case_4893,C_667,Cardiovascular / Pulmonary,train
+case_4894,C_668,Cardiovascular / Pulmonary,train
+case_4895,C_669,Cardiovascular / Pulmonary,train
+case_4896,C_670,Cardiovascular / Pulmonary,validation
+case_4897,C_671,Cardiovascular / Pulmonary,train
+case_4898,C_672,Cardiovascular / Pulmonary,train
+case_4899,C_673,Cardiovascular / Pulmonary,train
+case_4900,C_674,Cardiovascular / Pulmonary,validation
+case_4901,C_675,Cardiovascular / Pulmonary,train
+case_4903,C_676,Cardiovascular / Pulmonary,train
+case_4904,C_677,Cardiovascular / Pulmonary,validation
+case_4905,C_678,Cardiovascular / Pulmonary,train
+case_4906,C_679,Cardiovascular / Pulmonary,validation
+case_4907,C_680,Cardiovascular / Pulmonary,train
+case_4908,C_681,Cardiovascular / Pulmonary,train
+case_4909,C_682,Cardiovascular / Pulmonary,validation
+case_4910,C_683,Cardiovascular / Pulmonary,train
+case_4911,C_684,Cardiovascular / Pulmonary,train
+case_4913,C_685,Cardiovascular / Pulmonary,train
+case_4914,C_686,Cardiovascular / Pulmonary,train
+case_4915,C_687,Cardiovascular / Pulmonary,train
+case_4918,C_688,Cardiovascular / Pulmonary,test
+case_4919,C_689,Cardiovascular / Pulmonary,train
+case_4923,C_690,Cardiovascular / Pulmonary,train
+case_4924,C_691,Cardiovascular / Pulmonary,train
+case_4925,C_692,Cardiovascular / Pulmonary,train
+case_4926,C_693,Cardiovascular / Pulmonary,test
+case_4927,C_694,Cardiovascular / Pulmonary,train
+case_4929,C_695,Cardiovascular / Pulmonary,train
+case_4931,C_696,Cardiovascular / Pulmonary,validation
+case_4934,C_697,Cardiovascular / Pulmonary,train
+case_4935,C_698,Cardiovascular / Pulmonary,train
+case_4944,C_699,Cardiovascular / Pulmonary,train
+case_4945,C_700,Cardiovascular / Pulmonary,validation
+case_4946,C_701,Cardiovascular / Pulmonary,test
+case_4954,C_702,Cardiovascular / Pulmonary,train
+case_4955,C_703,Cardiovascular / Pulmonary,train
+case_4956,C_704,Cardiovascular / Pulmonary,train
+case_4957,C_705,Cardiovascular / Pulmonary,train
+case_4958,C_706,Cardiovascular / Pulmonary,train
+case_4960,C_707,Cardiovascular / Pulmonary,test
+case_4961,C_708,Cardiovascular / Pulmonary,validation
+case_4965,C_709,Cardiovascular / Pulmonary,train
+case_4967,C_710,Cardiovascular / Pulmonary,train
+case_4969,C_711,Cardiovascular / Pulmonary,train
+case_4971,C_712,Cardiovascular / Pulmonary,test
+case_4973,C_713,Cardiovascular / Pulmonary,train
+case_4974,C_714,Cardiovascular / Pulmonary,train
+case_4975,C_715,Cardiovascular / Pulmonary,train
+case_4976,C_716,Cardiovascular / Pulmonary,train
+case_52,C_16,Urology,train
+case_53,C_17,Urology,train
+case_54,C_18,Urology,train
+case_58,C_19,Urology,validation
+case_59,C_20,Urology,train
+case_60,C_21,Urology,train
+case_61,C_22,Urology,train
+case_64,C_23,Urology,train
+case_65,C_24,Urology,train
+case_66,C_25,Urology,train
+case_67,C_26,Urology,validation
+case_68,C_27,Urology,train
+case_69,C_28,Urology,validation
+case_7,C_2,Cardiovascular / Pulmonary,train
+case_70,C_29,Urology,train
+case_73,C_30,Urology,train
+case_79,C_31,Urology,train
+case_81,C_32,Urology,train
+case_84,C_33,Urology,train
+case_85,C_34,Urology,train
+case_9,C_3,Cardiovascular / Pulmonary,train

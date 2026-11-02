@@ -1,0 +1,26 @@
+test,passed,reviewer_approved,actual
+emergency,True,False,EMERGENCY_ESCALATED
+negated,True,False,REVIEW_REQUIRED
+historical,True,False,REVIEW_REQUIRED
+contrast,True,False,EMERGENCY_ESCALATED
+sparse,True,False,REVIEW_REQUIRED
+incomplete,True,False,REVIEW_REQUIRED
+unsupported,True,False,REVIEW_REQUIRED
+combined,True,False,REVIEW_REQUIRED
+hybrid_failure,True,False,REVIEW_REQUIRED
+"DISCHARGE DIAGNOSES,",True,False,Symptoms persist.
+DISCHARGE DIAGNOSES:,True,False,Symptoms persist.
+"HOSPITAL COURSE,",True,False,Symptoms persist.
+HOSPITAL COURSE:,True,False,Symptoms persist.
+"DELIVERY NOTE,",True,False,Symptoms persist.
+DELIVERY NOTE:,True,False,Symptoms persist.
+parse_valid,True,False,True
+parse_unsupported,True,False,False
+parse_invalid_json,True,False,False
+parse_empty,True,False,False
+BP: 90/60,True,False,EMERGENCY_ESCALATED
+SpO2: 88%,True,False,EMERGENCY_ESCALATED
+RR: 28,True,False,EMERGENCY_ESCALATED
+Previously BP: 90/60,True,False,REVIEW_REQUIRED
+HR: 160,True,False,REVIEW_REQUIRED
+Temp: 39 C,True,False,REVIEW_REQUIRED

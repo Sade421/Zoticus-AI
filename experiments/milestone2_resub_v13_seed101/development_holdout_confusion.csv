@@ -1,0 +1,11 @@
+gold,Cardiovascular / Pulmonary,Dermatology,ENT - Otolaryngology,Gastroenterology,Nephrology,Neurology,Obstetrics / Gynecology,Ophthalmology,Orthopedic,Urology,REVIEW_REQUIRED
+Cardiovascular / Pulmonary,31,0,0,1,0,0,1,0,0,0,0
+Dermatology,1,2,0,0,0,0,0,0,0,0,0
+ENT - Otolaryngology,1,0,3,0,0,0,0,0,0,1,0
+Gastroenterology,3,0,0,8,0,0,0,1,0,0,0
+Nephrology,1,0,0,1,5,0,0,0,0,0,0
+Neurology,1,0,0,0,0,5,0,0,1,0,0
+Obstetrics / Gynecology,0,0,0,1,1,0,6,0,0,0,0
+Ophthalmology,0,0,0,0,0,0,0,5,0,0,0
+Orthopedic,1,0,0,0,0,0,0,0,19,0,0
+Urology,0,0,0,0,0,0,0,0,0,8,0
