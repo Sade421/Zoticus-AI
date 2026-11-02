@@ -1,0 +1,103 @@
+{
+  "keyword_provenance": "inherited, not training-only for current split",
+  "model": "Keyword baseline",
+  "parameters": {
+    "Cardiovascular / Pulmonary": [
+      "heart",
+      "cardiac",
+      "coronary",
+      "pulmonary",
+      "lung",
+      "chest pain",
+      "ejection fraction",
+      "artery"
+    ],
+    "Dermatology": [
+      "skin",
+      "rash",
+      "lesion",
+      "dermat",
+      "mole",
+      "biopsy of the skin"
+    ],
+    "ENT - Otolaryngology": [
+      "throat",
+      "ear",
+      "nasal",
+      "sinus",
+      "tonsil",
+      "hearing",
+      "larynx"
+    ],
+    "Gastroenterology": [
+      "abdomen",
+      "abdominal",
+      "colon",
+      "bowel",
+      "gastric",
+      "liver",
+      "gi ",
+      "stomach"
+    ],
+    "Nephrology": [
+      "renal",
+      "kidney",
+      "dialysis",
+      "nephro",
+      "creatinine",
+      "glomerular"
+    ],
+    "Neurology": [
+      "seizure",
+      "neurolog",
+      "headache",
+      "brain",
+      "cranial",
+      "stroke",
+      "weakness"
+    ],
+    "Obstetrics / Gynecology": [
+      "pregnant",
+      "uterus",
+      "cervix",
+      "ovary",
+      "vaginal",
+      "gestational",
+      "fetal"
+    ],
+    "Ophthalmology": [
+      "eye",
+      "vision",
+      "visual",
+      "ocular",
+      "retina",
+      "cornea",
+      "conjunctiv",
+      "eyelid",
+      "optic",
+      "macula",
+      "glaucoma",
+      "cataract"
+    ],
+    "Orthopedic": [
+      "fracture",
+      "joint",
+      "knee",
+      "hip",
+      "shoulder",
+      "orthopedic",
+      "bone",
+      "ligament"
+    ],
+    "Urology": [
+      "bladder",
+      "prostate",
+      "urinary",
+      "kidney stone",
+      "urology",
+      "urethra",
+      "scrotal"
+    ]
+  },
+  "seed": 101
+}
