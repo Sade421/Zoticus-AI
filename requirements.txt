@@ -1,0 +1,4 @@
+fastapi>=0.110
+uvicorn>=0.29
+scikit-learn==1.9.1
+joblib
