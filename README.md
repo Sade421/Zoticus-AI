@@ -2,253 +2,182 @@
 
 ## Clinical Specialist Matching and Scheduling Assistant
 
-Sentient AI is a capstone project developed for Zoticus AI’s Agentic AI platform. The system analyzes de-identified clinical transcription text and recommends the appropriate medical specialty for a nonemergency outpatient referral.
+Sentient AI is an INAI 6986 capstone project built for Zoticus AI's agentic AI platform. It reads a de-identified clinical intake, recommends one of ten medical specialties for a nonemergency outpatient referral, and drafts an appointment for staff approval. Emergencies, low-confidence results and anything unusual go to clinical staff instead.
 
-The project also demonstrates an n8n workflow that drafts an appointment booking when the recommendation meets the confidence threshold. Low-confidence cases are sent to clinical staff for manual review.
+It is a decision-support prototype tested on synthetic data. It does not diagnose, prescribe, or confirm appointments, and no patient is contacted until a staff member approves the draft.
 
+## Milestone 3 at a glance
 
-## Project Decision
+| Part | What it is | Where |
+| --- | --- | --- |
+| Model service | FastAPI app that loads the frozen Milestone 2 model (MLP 64, run `mlp_64_v1`) and the deterministic safety gate | `sentient_api.py` |
+| Frozen model | The scikit-learn pipeline frozen at the end of Milestone 2 | `experiments/milestone2_resub_v13_seed101/frozen_model.joblib` |
+| Main workflow | n8n workflow: intake → validation → safety gate → Claude staff summary → specialty match → booking policy → draft or review | `n8n/Sentient AI - Clinicial Specialist Matching and Scheduling Assistant.json` |
+| Approval workflow | n8n workflow that emails the patient only after staff set `reviewer_decision = APPROVED` | `n8n/Sentient AI - Staff Approval Notifier.json` |
+| Test batch | Seven synthetic intakes covering every route, plus a script to send them | `tests/` |
 
-The system addresses one decision:
+## Run it from a fresh clone
 
-> Which medical specialist should receive the patient’s referral based on the available clinical narrative?
+### 1. Install and start the model service
 
-The system supports referral decisions but does not diagnose patients, prescribe treatment, or autonomously schedule appointments.
+```bash
+git clone https://github.com/Sade421/Zoticus-AI.git
+cd Zoticus-AI
+pip install -r requirements.txt
+uvicorn sentient_api:app --host 127.0.0.1 --port 8000
+```
 
-## Project Objectives
+`scikit-learn` is pinned to 1.9.1 because the frozen model was saved with that version. The service refuses to start if the model's classes do not match the ten supported specialties.
 
-- Achieve at least 85% agreement between the recommended specialist and the held-out MTSamples specialty label.
-- Achieve at least a 90% safety-review pass rate for generated appointment instructions.
-- Produce a specialist recommendation and draft booking for at least 90% of test cases.
-- Escalate low-confidence or unsupported recommendations to human review.
+If n8n runs in Docker on Linux, start the service with `--host 0.0.0.0` so the container can reach it through `host.docker.internal`. Docker Desktop on Mac and Windows works with the default host.
 
-## Data Source
+Check it:
 
-The primary dataset is the public MTSamples medical transcription corpus.
+```bash
+curl http://127.0.0.1:8000/health
+# {"status":"ok","model_run_id":"mlp_64_v1","labels":[...10 specialties...]}
+```
 
-- Unit of observation: one medical transcription
-- Input: de-identified transcription text
-- Target: medical-specialty label
-- Additional fields: description, sample type, and keywords when available
-- Approximate original size: 5,000 transcription samples
-- Prepared size reported by the latest supplied notebook: 773
-- Supported specialties: 10
-- Source: [MTSamples](https://www.mtsamples.com/)
+Also run the same check from inside the n8n container against the `api_base_url` you configure in step 2:
 
-The specialty label is treated as an evaluation benchmark. It is not assumed to be a clinically validated referral outcome.
+```bash
+docker exec -it <n8n-container> wget -qO- http://host.docker.internal:8000/health
+```
 
-## Data Preparation
+### 2. Import and configure the n8n workflows
 
-The preparation pipeline performs the following steps:
+1. In n8n, import both files from `n8n/`.
+2. Open the **Validate Intake** node in the main workflow and edit `CONFIG`:
+   - `api_base_url`: where n8n reaches the service (default `http://host.docker.internal:8000`)
+   - `staff_email`: the staff inbox for review and approval emails
+   - `calendar_id`: the Google Calendar that holds draft appointments
+   - `confidence_threshold`: 0.50 (see [Booking policy](#booking-policy))
+3. Connect these n8n credentials: Anthropic (staff summary), Gmail (staff and patient emails), Google Calendar (drafts) and Google Sheets (review queue). No keys are stored in this repository.
+4. Create a Google Sheet with a tab named `Review_Queue` and this header row, then select it in **Append to Review Queue** and in the approval workflow:
 
-1. Loads the source data.
-2. Removes empty transcription records.
-3. Removes duplicate or near-duplicate records.
-4. Normalizes specialty labels.
-5. Checks the text for possible identifying information.
-6. Reviews the specialty distribution.
-7. Selects specialties with sufficient examples.
-8. Creates stratified training, validation, and held-out test sets.
-9. Records fixed split assignments for reproducibility.
+   ```text
+   case_id, received_at, route, priority, reason, specialty_suggestion, confidence, ci95_low, ci95_high, clinical_summary, clarification_questions, status, proposed_start, calendar_event_id, calendar_link, patient_email, patient_first_name, assigned_to, reviewer_decision, reviewed_at, patient_notified_at
+   ```
 
-The latest supplied notebook also filters notes using a keyword-based multi-specialty heuristic, truncates text at the earliest recognized decision header, and drops text shorter than 40 characters. Notes without a recognized header remain in the current pipeline; they require a leakage audit. The heuristic does not establish clinically validated single-specialty ground truth.
+5. Activate both workflows.
 
-Raw data remains unchanged. Cleaned and processed files are stored separately.
+### 3. Run the test batch
 
-## Data Profile
+With both workflows active and the service running:
 
-The supplied `data_preparation` notebook reports the following stages. These values replace the earlier nine-label profile.  These values reflect a 10-specialty-label profile.
+```bash
+chmod +x tests/send_intake.sh
+WEBHOOK_URL=http://localhost:5678/webhook/sentient-ai-intake ./tests/send_intake.sh tests/intakes/0[1-5]*.json
+```
 
-| Preparation stage | Records |
-|---|---:|
-| Source rows loaded | 4,999 |
-| After selection of ten labels and removal of empty transcription text | 1,773 |
-| After exact transcription duplicate removal | 1,692 |
-| After keyword-based multi-specialty filtering | 1,552 |
-| After pre-decision truncation and minimum-length filtering | 773 |
-| Training partition (Section 7) | 525 |
-| Validation partition (Section 7) | 132 |
-| Test partition (Section 7) | 116 |
+Then stop the service (Ctrl+C in the uvicorn terminal) and send case 6, restart it, and send case 7:
 
-- Exact duplicates removed from the selected, nonempty subset: **81**.
-- Records removed by the multi-specialty heuristic: **140**.
-- Records removed for fewer than 40 characters of remaining text: **779**.
-- Modeling input: `text`; target: `specialty`.
-- Notes without a recognized decision header before minimum-length filtering: **255**.
-- The near-duplicate stage reports **772 clusters**, **one pair at similarity ≥ 0.90**, and **20 review-band pairs**.
+```bash
+./tests/send_intake.sh tests/intakes/06_service_stopped.json
+./tests/send_intake.sh tests/intakes/07_duplicate_case_id.json
+```
 
-Section 6 reports a preliminary 463/155/155 split and zero cross-split duplicate pairs. Section 7 subsequently replaces it with the 525/132/116 split used downstream and includes assertions for disjoint cases and clusters. The preliminary audit should not be presented as a separate measured audit of the final split.
+Finally, set `reviewer_decision` to `APPROVED` on case `M3-TEST-01`'s row in the sheet and confirm the approval workflow sends the patient notice and fills `patient_notified_at`.
 
-The 116-record test partition was reserved during revision from previously available development records. No test evaluation is shown in the latest supplied notebook. The earlier development history disclosed prior exposure of test cases, so this partition should not be represented as a fully independent final evaluation.
+| File | Case | Expected result |
+| --- | --- | --- |
+| `01_eligible_draft.json` | Full orthopedic referral, screening complete | HTTP 200, private DRAFT calendar event, queue row `PENDING_APPROVAL`, patient notice held |
+| `02_low_confidence_review.json` | Vague intake with no clear specialty | HTTP 200, review row, no draft (reason: clarification needed or confidence below 0.50) |
+| `03_emergency.json` | Chest pain with emergency indicators | HTTP 200, `EMERGENCY_ESCALATED`, URGENT staff email, no matching or draft |
+| `04_incomplete_screening.json` | Same text as case 1, `screening_complete: false` | HTTP 200, `REVIEW_REQUIRED`, no draft |
+| `05_missing_email_400.json` | No `patient_email` | HTTP 400 listing the missing field; nothing queued or emailed |
+| `06_service_stopped.json` | Valid case sent while the service is down | HTTP 200, review row with priority HIGH and the connection error in the reason |
+| `07_duplicate_case_id.json` | Case 1 sent again | A second draft and row are created (known gap: no duplicate prevention) |
 
-### Supported specialties and reported split counts
+Checked against the service before committing: case 1 is matched as Orthopedic at 0.97 confidence, case 2's top prediction is 0.26, and case 3 returns `EMERGENCY_ESCALATED`.
 
-| Specialty label | Training | Validation | Test |
-|---|---:|---:|---:|
-| Cardiovascular / Pulmonary | 33  |  153  | 33 |
-| Orthopedic | 20 |  94  | 20 |
-| Gastroenterology | 12 | 53  | 11 |
-| Obstetrics / Gynecology | 8 | 38 | 8 |          
-| Urology | 8 | 39  | 8 |
-| Nephrology |  7 | 33 | 7 |
-| Neurology | 7 |  34 | 8 |
-| ENT - Otolaryngology |  5 | 21 | 5 |
-| Ophthalmology |  5 |  21 |  4 |
-| Dermatology |  2 | 11 |  3 |
-| **Total** | **107** | **497** | **107** |
+## Service API
 
-These are dataset labels. In particular, `Cardiovascular / Pulmonary` combines disciplines and does not identify one individual clinician or distinguish cardiology from pulmonology.
+All requests are JSON. The service receives de-identified clinical text only; it never receives patient names or email addresses and keeps no request logs.
 
-## Proposed Approach
+### `GET /health`
 
-The latest supplied notebook compares:
+Returns `status`, `model_run_id` (`mlp_64_v1`) and the ten supported labels.
 
-1. Majority-class and deterministic keyword baselines
-2. Logistic Regression on TF-IDF features
-3. MLP classifiers with hidden layers (64) and (64, 32) on TF-IDF features
-4. A zero-shot Claude API pipeline (`zero_shot_v1`)
+### `POST /safety-gate`
 
-Claude is the leading candidate in the saved validation results. Final selection remains provisional pending reproducibility checks, leakage review, independent evaluation, and workflow safety testing.
+Deterministic screening ported from the Milestone 2 notebook. No model and no LLM.
 
-The planned application output contains:
+```json
+{"case_id": "M3-TEST-01", "text": "...", "screening_complete": true}
+```
 
-- Recommended specialist
-- Confidence indicator
-- Brief rationale
-- Supporting evidence from the input
-- Review-required status
+Returns `safety_status`:
 
-The current Claude evaluation requests only a JSON specialty label. It does not measure confidence, rationale quality, supporting evidence, or review-required status. The intended evaluation policy excludes test records from training, prompt examples, model selection, and threshold tuning.
+- `EMERGENCY_ESCALATED`: a red-flag phrase (for example chest pain, difficulty breathing, sudden one-sided weakness) or a dangerous vital sign (BP systolic under 100, SpO2 under 90%, RR over 22). The response includes emergency guidance.
+- `REVIEW_REQUIRED`: screening is incomplete, a red flag appears in a negated or uncertain context, or vitals are present that need a reviewer.
+- `NONEMERGENCY_ELIGIBLE`: none of the above.
 
-## Evaluation
+### `POST /match`
 
-### Primary metric
+```json
+{"case_id": "M3-TEST-01", "text": "..."}
+```
 
-Top-1 specialist agreement: the proportion of cases whose single predicted specialty matches the reference label. The project target is at least 85% on an independent held-out evaluation. Current reported scores are validation results.
+Applies the Milestone 2 pre-decision truncation (text is cut at the first decision header such as ASSESSMENT or PLAN), then runs the frozen model. Text shorter than 40 characters after truncation returns `match_status: REVIEW_REQUIRED`. Otherwise it returns `match_status: MATCHED`, `specialty`, `confidence`, `top_candidates` (top three with probabilities), `truncated`, `cut_header` and `model_run_id`.
 
-### Supporting metrics
+## Booking policy
 
-- Macro F1 score
-- Per-specialty precision and recall
-- Confusion matrix
-- Abstention or escalation rate
-- Appointment-instruction safety pass rate
-- Performance by symptom-description style
+The **Apply Booking Policy** node allows a draft only when every check passes. The first check that fails becomes the review reason, and no default specialty is ever substituted.
 
-### Project acceptance targets
+1. Intake is valid, `screening_complete` is true, and the safety gate returned `NONEMERGENCY_ELIGIBLE`.
+2. The Claude staff summary is present, well formed and has no open clarification questions.
+3. `/match` returned `MATCHED` with one of the ten supported labels.
+4. Confidence is at least **0.50**. On the Milestone 2 holdout this released 91 of 108 full notes, 92% of them correct.
+5. The clinical text is at least **200 characters** (Milestone 2 commitment).
+6. The top two candidates are not both in the abdominal–pelvic group (Gastroenterology, Nephrology, Urology, Obstetrics / Gynecology), the boundary identified in the Milestone 2 error analysis.
+7. The prediction is not the combined `Cardiovascular / Pulmonary` label, which always needs staff to choose Cardiology or Pulmonology.
 
-| Measure | Required threshold |
-|---|---:|
-| Specialist agreement | At least 85% |
-| Instruction-safety pass rate | At least 90% |
-| Cases producing a draft booking | At least 90% |
+An allowed case gets a proposed 30-minute slot (the preferred date if it is a valid future weekday, otherwise the next business day, at 9:00 America/Chicago) and a private Google Calendar event marked DRAFT. Every route (draft, review and emergency) sends a staff email and writes a row to `Review_Queue`. The patient is emailed only by the approval workflow, after staff approve.
 
-The workflow remains a demonstration if any required threshold is not met.
+## Model
 
-## Results and Evidence
+| Item | Value |
+| --- | --- |
+| Model | MLP with one hidden layer of 64 units on TF-IDF features (`mlp_64_v1`) |
+| Artifact | `experiments/milestone2_resub_v13_seed101/frozen_model.joblib` |
+| SHA-256 | `b38c66e021de4a9cc080033e2d6ce762a8bf7bb7613ad43ee6241aff7fb08a8f` |
+| Development holdout | 92 of 108 correct (Milestone 2) |
+| Labels | Cardiovascular / Pulmonary, Orthopedic, Gastroenterology, Neurology, Obstetrics / Gynecology, Urology, ENT - Otolaryngology, Nephrology, Dermatology, Ophthalmology |
 
-### Saved validation results
+`sentient_api.py` loads this file directly. It replaces the `frozen_predictor.py` call planned in Milestone 2; the model is the same, only the calling code differs. Set `SENTIENT_MODEL_PATH` to load the model from another location.
 
-Sections 9–12 and the Section 15 summary report the following scores on **132 validation cases** across ten labels. The two baselines are reported in Section 9; they are commented out of the Section 15 summary. Top-1 specialist agreement is the primary metric; macro F1 is a supporting metric. Scores are reproduced at the notebook's displayed precision.
+## Known limits
 
-| Model or baseline | Top-1 specialist agreement | Macro F1 |
-|---|---:|---:|
-| Majority class | 30.8% | 0.047 |
-| Keyword baseline | 54.2% | 0.466 |
-| Logistic Regression (TF-IDF) | 86.9% | 0.870 |
-| MLP (64) | 88.8% | 0.863 |
-| MLP (64, 32) | 86.0% | 0.825 |
-| Claude pipeline (zero-shot, including fallback predictions) | **87.9%** | **0.888** |
+- **No duplicate prevention.** A repeated `case_id` creates a second draft, email and queue row.
+- **No calendar availability check.** Every draft for a given day is proposed at 9:00.
+- **Webhook has no authentication.** Add header authentication before exposing it beyond a local machine.
+- **De-identification is assumed.** The workflow does not strip identifiers from the clinical text.
+- **Emergency and review rows carry no patient contact.** Staff must look up the patient elsewhere to follow up.
+- **Synthetic data only.** The threshold and screening rules are not clinically validated.
 
-Claude has the highest reported validation agreement and macro F1. Its validation agreement exceeds the numeric 85% target, but this does **not** demonstrate that the held-out target or project acceptance criteria have been met.
-
-### Claude per-specialty validation results
-
-These values are copied from Section 12's saved classification report, which displays per-class metrics to two decimal places.
-
-| Specialty label | Precision | Recall | F1 | Validation support |
-|---|---:|---:|---:|---:|
-| Cardiovascular / Pulmonary | 0.94 | 0.94  | 0.94 | 32
-| Dermatology | 1.00 | 1.00  | 1.00 | 2
-| ENT - Otolaryngology |  1.00 | 1.00  | 1.00 | 5
-| Gastroenterology | 0.90 | 0.90  | 0.90 | 10
-| Nephrology | 1.00  | 0.50  | 0.67 | 6
-| Neurology | 0.73 | 1.00 | 0.84 | 8
-| Obstetrics / Gynecology | 1.00 | 1.00 | 1.00 | 8
-| Ophthalmology | 1.00 | 1.00  | 1.00 | 4
-| Orthopedic | 1.00  | 0.94 | 0.97 | 18
-| Urology | 0.89 | 1.00 | 0.94 | 8
-Nephrology has the lowest reported Claude recall (1.00). Dermatology's perfect score represents only three validation cases and should not be interpreted as established generalization.
-
-### Evidence and reproducibility limits
-
-Primary evidence: the supplied `Sentient_AI_Data_Preparation (5).ipynb`, inspected on October 7, 2026. Upload this notebook to the repository alongside the README so readers can inspect the updated outputs.
-
-Historical reference only: [older preparation notebook at commit 9916ad5](https://github.com/Sade421/Zoticus-AI/blob/9916ad52bce4faa413b64ce2761b72881da04ef9/notebook/data_preparation). That older notebook reports nine labels and different metrics; it is not evidence for the current tables.
-
-| Claim | Evidence location in the notebook |
-|---|---|
-| Source load and preparation counts | Sections 1–5 |
-| Near-duplicate grouping and preliminary audit | Section 6 |
-| Final split counts and separation assertions | Section 7 |
-| Full-text diagnostic comparator | Section 8 |
-| Baseline and comparator reports | Sections 9–11 |
-| Claude report and fallback warnings | Section 12 |
-| Model comparison table | Section 15 |
-
-- These are **saved notebook outputs**, inspected for this README update; the notebook was not rerun. The latest supplied notebook includes execution counts for the modeling cells. A clean end-to-end run and committed case-level exports are still needed to independently reproduce the reported scores.
-- Section 12's code records `model_id = "claude-sonnet-5-5"`, while its introductory prose names Claude 3.5 Sonnet. The exact served model cannot be independently confirmed from the committed artifacts.
-- One saved Claude warning shows a missing text block for `case_3762`. The pipeline uses the fallback label `Cardiovascular / Pulmonary`; the reported score therefore evaluates the pipeline including fallback behavior, rather than successful model responses alone.
-- Section 8 reports full-text Logistic Regression at 86.4% agreement and 0.866 macro F1, compared with 84.8% and 0.843 on the truncated input. This diagnostic comparison is consistent with sensitivity to removed content; it does not prove all remaining leakage is eliminated.
-- The truncation output reports recognized headers in 1,297 of 1,552 records, leaving 255 without a recognized header; the code retains them if they satisfy the minimum length. These notes and the 20 review-band pairs require documented review. A completed audit is not supplied.
-- The notebook contains code to export prediction, summary, review-pair, and split-manifest files, but those generated files are not present in this repository snapshot. Case-level scores, fallback-adjusted scores, and final split audits cannot yet be independently recomputed from committed exports.
-- Section 13's raw recall counts use `mlp_64.predict(Xval)` and therefore describe MLP (64), not Claude. Section 14's term weights and occlusion example describe Logistic Regression, not Claude. Its displayed true-class probability drops from 0.455 to 0.404 after term removal.
-- Held-out test performance, confidence calibration, escalation rate, appointment-instruction safety, booking coverage, and performance by symptom-description style are **not reported**.
-
-## Current Implementation Status
-
-The repository currently contains the README, source CSV, and preparation notebook. Updated model comparison results are available in the supplied notebook and must be uploaded to GitHub with this README. The n8n booking workflow and application-level confidence, evidence, and review outputs described below are planned capabilities; their implementation and acceptance results are not established by the committed files.
-
-## Human Review and Safety
-
-Patient safety and human oversight are required.
-
-The workflow sends a case to clinical(Nurses, doctors) review when:
-
-- Model confidence is below the approved threshold.
-- The recommendation lacks supporting evidence.
-- The output does not match a supported specialty.
-- Appointment instructions fail the safety checklist.
-- The input is incomplete or ambiguous.
-
-Generated recommendations and instructions are drafts. Clinical staff (nurses, doctors) retain final authority. They are the ones responsible for checking patient safety and reviewing the patient records.
-
-## Planned System Workflow
-
-1. Patient intake or clinical text becomes available.
-2. n8n sends the de-identified text to the specialist-matching pipeline.
-3. The pipeline returns a specialist recommendation and confidence result.
-4. High-confidence cases generate a draft booking for staff approval.
-5. Low-confidence cases enter the clinician-review queue.
-6. The system logs the recommendation, review status, and final action.
-
-## Technology Stack
-
-- Python
-- Pandas
-- Claude API
-- n8n
-- scikit-learn for evaluation metrics
-- Git and GitHub for version control
-
-## Planned Repository Structure
-
-The tree below describes the intended layout. The current committed paths are `README.md`, `mtsamples-v3.csv`, and `notebook/data_preparation` (notebook JSON stored without an `.ipynb` extension).
+## Repository layout
 
 ```text
+Zoticus-AI/
+├── README.md
+├── requirements.txt
+├── sentient_api.py                     # Milestone 3 model service
+├── n8n/                                # Milestone 3 workflow exports
+├── tests/
+│   ├── send_intake.sh                  # posts intake files to the webhook
+│   └── intakes/                        # seven synthetic test cases
+├── notebook/
+│   ├── Milestone 1.ipynb               # data preparation
+│   └── Sentient_AI_Milestone_2.ipynb   # model selection, safety gate, freezing
+├── experiments/
+│   └── milestone2_resub_v13_seed101/   # frozen model, splits, metrics, run registry
+└── artifacts/                          # source data and audit files
+```
 
-├── notebooks/
-│   └── data_preparation.ipynb
-| - README.md
-├── mtsamples-v3.csv
+## Earlier milestones
 
+- **Milestone 1 (data):** MTSamples medical transcriptions filtered to ten specialty labels, deduplicated, truncated before decision headers, with a 40-character minimum. See `notebook/Milestone 1.ipynb`.
+- **Milestone 2 (model):** baselines, logistic regression and MLP candidates compared on fixed splits; MLP 64 frozen with its safety gate and automation contract. See `notebook/Sentient_AI_Milestone_2.ipynb` and `experiments/milestone2_resub_v13_seed101/`.
+
+Data source: [MTSamples](https://www.mtsamples.com/). The specialty labels are an evaluation benchmark, not clinically validated referral outcomes.
