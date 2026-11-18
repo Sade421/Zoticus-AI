@@ -12,9 +12,9 @@ It is a decision-support prototype tested on synthetic data. It does not diagnos
 | --- | --- | --- |
 | Model service | FastAPI app that loads the frozen Milestone 2 model (MLP 64, run `mlp_64_v1`) and the deterministic safety gate | `sentient_api.py` |
 | Frozen model | The scikit-learn pipeline frozen at the end of Milestone 2 | `experiments/milestone2_resub_v13_seed101/frozen_model.joblib` |
-| Main workflow | n8n workflow: intake → validation → safety gate → Claude staff summary → specialty match → booking policy → draft or review | `n8n/Sentient AI - Clinicial Specialist Matching and Scheduling Assistant.json` |
+| Main workflow | n8n workflow: intake → validation → safety gate → Claude staff summary → specialty match → booking policy → draft or review | `n8n/Sentient AI - Milestone 3 Workflow.json` |
 | Approval workflow | n8n workflow that emails the patient only after staff set `reviewer_decision = APPROVED` | `n8n/Sentient AI - Staff Approval Notifier.json` |
-| Test batch | Seven synthetic intakes covering every route, plus a script to send them | `tests/` |
+| Manual test plan | PowerShell request example, required scenarios and evidence table; execution results still need to be recorded | Testing instructions below |
 
 ## Run it from a fresh clone
 
@@ -29,7 +29,7 @@ uvicorn sentient_api:app --host 127.0.0.1 --port 8000
 
 `scikit-learn` is pinned to 1.9.1 because the frozen model was saved with that version. The service refuses to start if the model's classes do not match the ten supported specialties.
 
-If n8n runs in Docker on Linux, start the service with `--host 0.0.0.0` so the container can reach it through `host.docker.internal`. Docker Desktop on Mac and Windows works with the default host.
+The service URL must be reachable from the n8n runtime. For a Docker setup, verify host routing and the service bind address; Linux may require an explicit host-gateway mapping. For n8n Cloud, use a reachable hosted service URL rather than localhost or `host.docker.internal`.
 
 Check it:
 
@@ -46,11 +46,11 @@ docker exec -it <n8n-container> wget -qO- http://host.docker.internal:8000/healt
 
 ### 2. Import and configure the n8n workflows
 
-1. In n8n, import both files from `n8n/`.
+1. In n8n, import `n8n/Sentient AI - Milestone 3 Workflow.json` and `n8n/Sentient AI - Staff Approval Notifier.json`.
 2. Open the **Validate Intake** node in the main workflow and edit `CONFIG`:
    - `api_base_url`: where n8n reaches the service (default `http://host.docker.internal:8000`)
    - `staff_email`: the staff inbox for review and approval emails
-   - `calendar_id`: the Google Calendar that holds draft appointments
+   - `calendar_id`: the Google Calendar that holds draft appointments. Also verify the actual Calendar field in **Create Draft in Google Calendar**; a fixed node value is not changed by editing CONFIG.
    - `confidence_threshold`: 0.50 (see [Booking policy](#booking-policy))
 3. Connect these n8n credentials: Anthropic (staff summary), Gmail (staff and patient emails), Google Calendar (drafts) and Google Sheets (review queue). No keys are stored in this repository.
 4. Create a Google Sheet with a tab named `Review_Queue` and this header row, then select it in **Append to Review Queue** and in the approval workflow:
@@ -61,35 +61,84 @@ docker exec -it <n8n-container> wget -qO- http://host.docker.internal:8000/healt
 
 5. Activate both workflows.
 
-### 3. Run the test batch
+### 3. Test manually with Windows PowerShell
 
-With both workflows active and the service running:
+There is currently no committed `tests/` folder or shell test runner. Use the PowerShell example below to send synthetic intake requests. The scenarios in the table are a test plan, not completed results.
 
-```bash
-chmod +x tests/send_intake.sh
-WEBHOOK_URL=http://localhost:5678/webhook/sentient-ai-intake ./tests/send_intake.sh tests/intakes/0[1-5]*.json
+Use an inbox you control for test notifications. Enabled nodes can create real draft calendar events, send staff notifications and write spreadsheet rows.
+
+1. Start the model service and verify that n8n can reach it.
+2. Save and activate/publish the main workflow, then copy the Webhook node's **Production URL**. Production runs appear under **Executions**.
+3. Alternatively, copy the **Test URL** and start **Listen for test event** or **Execute workflow** before sending the request.
+4. Keep the Webhook response mode set to **Using Respond to Webhook Node**.
+5. Replace the URL below. This first example is intentionally short and should produce a review outcome, not a draft.
+
+```powershell
+$url = "PASTE_YOUR_WEBHOOK_URL_HERE"
+
+$body = @{
+    case_id = "M3-SHORT-" + (Get-Date -Format "yyyyMMdd-HHmmss")
+    clinical_text = "Synthetic intake: knee discomfort for three weeks; requesting outpatient evaluation."
+    patient_email = "test@example.com"
+    patient_first_name = "Test"
+    screening_complete = $true
+}
+
+function Send-SentientIntake {
+    param([hashtable]$Intake)
+    $json = $Intake | ConvertTo-Json -Depth 10
+    try {
+        $result = Invoke-WebRequest -Uri $url -Method Post -ContentType "application/json" -Body $json -UseBasicParsing
+        Write-Output ("HTTP " + [int]$result.StatusCode)
+        Write-Output $result.Content
+    }
+    catch {
+        if ($null -ne $_.Exception.Response) {
+            Write-Output ("HTTP " + [int]$_.Exception.Response.StatusCode)
+        }
+        if ($_.ErrorDetails.Message) {
+            Write-Output $_.ErrorDetails.Message
+        }
+        else {
+            Write-Output $_.Exception.Message
+        }
+    }
+}
+
+Send-SentientIntake -Intake $body
 ```
 
-Then stop the service (Ctrl+C in the uvicorn terminal) and send case 6, restart it, and send case 7:
+For each subsequent case, copy the body with `$case = $body.Clone()`, assign a new `case_id`, change the relevant fields, then run `Send-SentientIntake -Intake $case`. Preserve the exact request body with the run evidence. Reuse an ID only for the deliberate duplicate test.
 
-```bash
-./tests/send_intake.sh tests/intakes/06_service_stopped.json
-./tests/send_intake.sh tests/intakes/07_duplicate_case_id.json
-```
-
-Finally, set `reviewer_decision` to `APPROVED` on case `M3-TEST-01`'s row in the sheet and confirm the approval workflow sends the patient notice and fills `patient_notified_at`.
-
-| File | Case | Expected result |
+| Case | Input or action | Expected behavior to verify |
 | --- | --- | --- |
-| `01_eligible_draft.json` | Full orthopedic referral, screening complete | HTTP 200, private DRAFT calendar event, queue row `PENDING_APPROVAL`, patient notice held |
-| `02_low_confidence_review.json` | Vague intake with no clear specialty | HTTP 200, review row, no draft (reason: clarification needed or confidence below 0.50) |
-| `03_emergency.json` | Chest pain with emergency indicators | HTTP 200, `EMERGENCY_ESCALATED`, URGENT staff email, no matching or draft |
-| `04_incomplete_screening.json` | Same text as case 1, `screening_complete: false` | HTTP 200, `REVIEW_REQUIRED`, no draft |
-| `05_missing_email_400.json` | No `patient_email` | HTTP 400 listing the missing field; nothing queued or emailed |
-| `06_service_stopped.json` | Valid case sent while the service is down | HTTP 200, review row with priority HIGH and the connection error in the reason |
-| `07_duplicate_case_id.json` | Case 1 sent again | A second draft and row are created (known gap: no duplicate prevention) |
+| T1 Eligible draft | Complete synthetic orthopedic intake of at least 200 characters, screening complete; actual matcher and summary outputs must satisfy all booking checks | Private DRAFT calendar event and queue row PENDING_APPROVAL; patient notice held |
+| T2 Review | Vague nonemergency intake or an observed model confidence below 0.50 | Staff review without a draft; record whether the reason is clarification or low confidence |
+| T3 Emergency | Synthetic intake containing an active emergency indicator, such as "CHIEF COMPLAINT: Chest pain now." | Emergency guidance returned before Gmail and Sheets; no summary, specialty matching or calendar event |
+| T4 Incomplete screening | Set `screening_complete = $false` on otherwise valid intake | REVIEW_REQUIRED; no draft |
+| T5 Invalid input | Remove email with `$case.Remove("patient_email")` | HTTP 400; no service call, notification or queue write |
+| T6 Service outage | Stop only the model service, send a valid request, then restart the service | Caught connection failure and staff review; verify queue outcome |
+| T7 Duplicate | Resend the exact T1 request with the same case_id | Document actual behavior; duplicate prevention is not implemented, so another draft/row may be created |
+| T8 Short intake | Use fewer than 200 characters with otherwise passing summary and model checks | Staff review with the short-intake reason |
+| T9 Abdominal–pelvic boundary | Use a synthetic intake whose actual top two model candidates both belong to GI / Nephrology / Urology / OB-GYN | Staff review with the boundary reason; retain top_candidates as evidence |
 
-Checked against the service before committing: case 1 is matched as Orthopedic at 0.97 confidence, case 2's top prediction is 0.26, and case 3 returns `EMERGENCY_ESCALATED`.
+A case routed to review by an earlier check does not prove a later rule was exercised. For T8 and T9, verify the specific policy reason. Do not assume that mentioning GI or Urology in text guarantees those top candidates. Any mocked rule test must be labeled separately from an end-to-end model run.
+
+For T3, inspect execution timing and confirm the dedicated emergency response node runs before notifications and logging. Later logging failures cannot be reported in an HTTP response that has already been sent; inspect the execution and queue for those outcomes.
+
+### 4. Record execution evidence and staff approval
+
+For every case, fill one row using actual execution results:
+
+| Case ID | Execution ID | HTTP status | Safety status | Specialty | Confidence | Route/reason | Calendar event ID | Queue outcome |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Not yet recorded | — | — | — | — | — | — | — | — |
+
+Use N/A when matching or booking was skipped. Keep model suggestions separate from an approved referral. Retain the invalid-input response, outage error, duplicate outcome and emergency response timing.
+
+After a successful synthetic draft, configure and activate the staff approval notifier. Use a controlled test inbox in that draft's row, set `reviewer_decision` to `APPROVED`, and verify one notification and the `patient_notified_at` timestamp. Record its execution ID. Uploading the notifier does not by itself demonstrate successful delivery.
+
+No completed batch, approval-delivery result or new clean-clone result is claimed by these instructions. Add verified evidence after running the tests. Link the demonstration video in the report and Canvas. Also report the share of real-length evaluation intake that reaches a draft after the additional rules; this is separate from the synthetic routing tests.
 
 ## Service API
 
@@ -164,9 +213,6 @@ Zoticus-AI/
 ├── requirements.txt
 ├── sentient_api.py                     # Milestone 3 model service
 ├── n8n/                                # Milestone 3 workflow exports
-├── tests/
-│   ├── send_intake.sh                  # posts intake files to the webhook
-│   └── intakes/                        # seven synthetic test cases
 ├── notebook/
 │   ├── Milestone 1.ipynb               # data preparation
 │   └── Sentient_AI_Milestone_2.ipynb   # model selection, safety gate, freezing
