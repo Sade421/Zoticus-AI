@@ -1,0 +1,433 @@
+{
+  "name": "Sentient AI - Staff Approval Notifier",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -208,
+        320
+      ],
+      "id": "67772511-f8fa-4dc1-a0cc-706142ca0e8b"
+    },
+    {
+      "parameters": {},
+      "name": "Run Now (demo)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        528
+      ],
+      "id": "8119be6e-10c8-471a-be28-8e44e104548a"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg",
+          "mode": "list",
+          "cachedResultName": "Sentient AI Review Queue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 881846579,
+          "mode": "list",
+          "cachedResultName": "Review_Queue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg/edit#gid=881846579"
+        },
+        "options": {}
+      },
+      "name": "Read Review Queue",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        48,
+        432
+      ],
+      "id": "a5b6f007-1037-4cf1-af69-cfcfaad39ddd",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JCsgoyBeBqVe7BEg",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Rows a staff member has approved whose patient has not been told yet.\nconst CLINIC = \"Sentient AI Referral Clinic\";\nconst TZ = \"America/Chicago\";\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json;\n  const decision = String(r.reviewer_decision ?? \"\").trim().toUpperCase();\n  if (r.route !== \"DRAFT_PENDING_APPROVAL\" || decision !== \"APPROVED\") continue;\n  if (String(r.patient_notified_at ?? \"\").trim()) continue;   // already notified: never send twice\n  if (!String(r.patient_email ?? \"\").includes(\"@\")) continue;\n  const when = DateTime.fromISO(String(r.proposed_start)).setZone(TZ);\n  const whenText = when.isValid ? when.toFormat(\"cccc, LLLL d, yyyy 'at' h:mm a\") : String(r.proposed_start);\n  const name = String(r.patient_first_name || \"\").trim() || \"there\";\n  out.push({ json: {\n    case_id: r.case_id,\n    reviewed_at: r.reviewed_at,\n    patient_email: r.patient_email,\n    email_subject: `Your ${CLINIC} appointment`,\n    email_body:\n`Hello ${name},\n\nA member of our staff has reviewed your referral to ${CLINIC}. Your appointment with our ${r.specialty_suggestion} team is scheduled for ${whenText} (Central Time).\n\nIf you need a different time, reply to this email or call the clinic.\n\nIf your symptoms get worse, or you have chest pain, trouble breathing, sudden weakness, or other severe symptoms, call 911 or go to the nearest emergency department. Do not wait for this appointment.\n\nReference number: ${r.case_id}\n\n${CLINIC}`,\n  }});\n}\nreturn out;"
+      },
+      "name": "Select Approved Drafts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        432
+      ],
+      "id": "03796e7b-1bc2-45cc-9c6e-435aa92a22dc"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.patient_email }}",
+        "subject": "={{ $json.email_subject }}",
+        "emailType": "text",
+        "message": "={{ $json.email_body }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "name": "Email Patient (Approved)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        528,
+        432
+      ],
+      "id": "bffbd4f7-bbab-4dd4-9174-6b043633c3cf",
+      "webhookId": "858c5527-d54b-4388-aeff-6d8e76a63515",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Q1UrDeUpJhx98opR",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg",
+          "mode": "list",
+          "cachedResultName": "Sentient AI Review Queue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 881846579,
+          "mode": "list",
+          "cachedResultName": "Review_Queue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eGb_vo6dsbggnrzWMwJZPsGQ3CfBvN3cnChmDIms9Jg/edit#gid=881846579"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "case_id": "={{ $('Select Approved Drafts').item.json.case_id }}",
+            "status": "={{ $json.error ? 'APPROVED_EMAIL_FAILED' : 'APPROVED_NOTIFIED' }}",
+            "patient_notified_at": "={{ $json.error ? '' : $now.toISO() }}",
+            "reviewed_at": "={{ $('Select Approved Drafts').item.json.reviewed_at || $now.toISO() }}"
+          },
+          "matchingColumns": [
+            "case_id"
+          ],
+          "schema": [
+            {
+              "id": "case_id",
+              "displayName": "case_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "received_at",
+              "displayName": "received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "specialty_suggestion",
+              "displayName": "specialty_suggestion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "confidence",
+              "displayName": "confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ci95_low",
+              "displayName": "ci95_low",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ci95_high",
+              "displayName": "ci95_high",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinical_summary",
+              "displayName": "clinical_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "clarification_questions",
+              "displayName": "clarification_questions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proposed_start",
+              "displayName": "proposed_start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "calendar_event_id",
+              "displayName": "calendar_event_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "calendar_link",
+              "displayName": "calendar_link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "patient_email",
+              "displayName": "patient_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "patient_first_name",
+              "displayName": "patient_first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "assigned_to",
+              "displayName": "assigned_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reviewer_decision",
+              "displayName": "reviewer_decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reviewed_at",
+              "displayName": "reviewed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "patient_notified_at",
+              "displayName": "patient_notified_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "name": "Update Review Queue Row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        768,
+        320
+      ],
+      "id": "dc428dfb-37b2-4acc-9f17-6d9ca8a81598",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JCsgoyBeBqVe7BEg",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Staff approval → patient notice\nPolls Review_Queue. For rows with route DRAFT_PENDING_APPROVAL, reviewer_decision = APPROVED and an empty patient_notified_at, it emails the patient and stamps patient_notified_at so the notice is never sent twice.\nREJECTED rows are left for staff to handle directly. Email failures are marked APPROVED_EMAIL_FAILED.",
+        "height": 260,
+        "width": 420
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6694623d-c0bb-41a2-86ec-bdc1cfaa7216"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Read Review Queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run Now (demo)": {
+      "main": [
+        [
+          {
+            "node": "Read Review Queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Review Queue": {
+      "main": [
+        [
+          {
+            "node": "Select Approved Drafts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Approved Drafts": {
+      "main": [
+        [
+          {
+            "node": "Email Patient (Approved)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Patient (Approved)": {
+      "main": [
+        [
+          {
+            "node": "Update Review Queue Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "4b0355cb-b59b-44ea-9eeb-745fc8bec4be",
+  "meta": {
+    "instanceId": "83bbdd19745504c0fa65d03c58fbeeeaea03bc8a4c33a38d513005632fbe1076"
+  },
+  "nodeGroups": [],
+  "id": "WDadbeyiYDStTjze",
+  "tags": []
+}
